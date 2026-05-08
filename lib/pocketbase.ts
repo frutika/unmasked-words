@@ -13,4 +13,6 @@ export interface Post {
   content: string;
   alias: string;
   created: string;
+  plus: number;
+  bang: number;
 }

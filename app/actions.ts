@@ -3,9 +3,22 @@
 import { createPocketBase } from "@/lib/pocketbase";
 import { revalidatePath } from "next/cache";
 
-export async function submitPost(content: string, alias: string) {
-  if (!content.trim()) {
-    throw new Error("Content cannot be empty.");
+export async function submitPost(
+  content: string,
+  alias: string,
+  honeypot: string,
+  mathA: number,
+  mathB: number,
+  mathAnswer: string
+) {
+  if (!content.trim()) throw new Error("Content cannot be empty.");
+
+  // bot filled the hidden field
+  if (honeypot) return;
+
+  // wrong math answer
+  if (parseInt(mathAnswer, 10) !== mathA + mathB) {
+    throw new Error("Verification failed.");
   }
 
   const pb = createPocketBase();

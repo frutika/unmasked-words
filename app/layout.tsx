@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { GeistMono } from "geist/font/mono";
 import "./globals.css";
+import HashrateWidget from "@/components/HashrateWidget";
 
 export const metadata: Metadata = {
   title: "UnmaskedWords — Say it without a face",
@@ -42,7 +43,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${GeistMono.variable} h-full`}>
-      <body className="min-h-full bg-[#0a0a0a] text-[#f0f0f0]">{children}</body>
+      <body className="min-h-full bg-[#0a0a0a] text-[#f0f0f0]">
+        {children}
+        <HashrateWidget />
+      </body>
     </html>
   );
 }

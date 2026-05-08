@@ -1,8 +1,24 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import type { Post } from "@/lib/pocketbase";
 import ShareMenu from "./ShareMenu";
+
+type ReactedMap = Record<string, { plus: boolean; bang: boolean }>;
+
+function getReacted(): ReactedMap {
+  try {
+    return JSON.parse(localStorage.getItem("uw_reacted") ?? "{}");
+  } catch {
+    return {};
+  }
+}
+
+function setReacted(map: ReactedMap) {
+  try {
+    localStorage.setItem("uw_reacted", JSON.stringify(map));
+  } catch {}
+}
 
 function timeAgo(dateStr: string): string {
   const diff = Date.now() - new Date(dateStr).getTime();
@@ -19,6 +35,46 @@ function timeAgo(dateStr: string): string {
 export default function Feed({ initialPosts }: { initialPosts: Post[] }) {
   const [posts, setPosts] = useState<Post[]>(initialPosts);
   const [newIds, setNewIds] = useState<Set<string>>(new Set());
+  const [reacted, setReactedState] = useState<ReactedMap>({});
+
+  useEffect(() => {
+    setReactedState(getReacted());
+  }, []);
+
+  const react = useCallback(async (postId: string, type: "+" | "!") => {
+    const field = type === "+" ? "plus" : "bang";
+    const current = reacted[postId]?.[field] ?? false;
+    const action = current ? "remove" : "add";
+    const delta = action === "add" ? 1 : -1;
+
+    // optimistic update
+    setPosts((prev) =>
+      prev.map((p) =>
+        p.id === postId ? { ...p, [field]: Math.max(0, (p[field] ?? 0) + delta) } : p
+      )
+    );
+    const next = {
+      ...reacted,
+      [postId]: { ...(reacted[postId] ?? { plus: false, bang: false }), [field]: !current },
+    };
+    setReactedState(next);
+    setReacted(next);
+
+    await fetch("/api/react", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ postId, type, action }),
+    }).catch(() => {
+      // revert on error
+      setPosts((prev) =>
+        prev.map((p) =>
+          p.id === postId ? { ...p, [field]: Math.max(0, (p[field] ?? 0) - delta) } : p
+        )
+      );
+      setReactedState(reacted);
+      setReacted(reacted);
+    });
+  }, [reacted]);
 
   useEffect(() => {
     const poll = async () => {
@@ -79,7 +135,23 @@ export default function Feed({ initialPosts }: { initialPosts: Post[] }) {
             <span className="font-mono text-[#ff3c00] text-xs font-bold tracking-wider uppercase">
               — {post.alias || "Anonymous"}
             </span>
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-3">
+              <button
+                onClick={() => react(post.id, "+")}
+                className={`font-mono text-xs tabular-nums transition-opacity ${
+                  reacted[post.id]?.plus ? "opacity-100" : "opacity-40 hover:opacity-70"
+                }`}
+              >
+                [ + {post.plus ?? 0} ]
+              </button>
+              <button
+                onClick={() => react(post.id, "!")}
+                className={`font-mono text-xs tabular-nums transition-opacity ${
+                  reacted[post.id]?.bang ? "opacity-100" : "opacity-40 hover:opacity-70"
+                }`}
+              >
+                [ ! {post.bang ?? 0} ]
+              </button>
               <span className="font-mono text-[#555555] text-xs tabular-nums">
                 {timeAgo(post.created)}
               </span>

@@ -16,3 +16,37 @@ export interface Post {
   plus: number;
   bang: number;
 }
+
+export interface Duel {
+  id: string;
+  question: string;
+  question_index: number;
+  answer_a: string;
+  alias_a: string;
+  answer_b: string;
+  alias_b: string;
+  votes_a: number;
+  votes_b: number;
+  status: "waiting" | "complete";
+  created: string;
+  updated: string;
+}
+
+export interface ThreadPost {
+  id: string;
+  thread_slug: string;
+  content: string;
+  alias: string;
+  created: string;
+  plus: number;
+  bang: number;
+}
+
+export interface BoxVoice {
+  id: string;
+  fragment: string;
+  thought_alias: string;
+  original_length: number;
+  extracted_at: string;
+  created: string;
+}

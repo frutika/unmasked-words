@@ -1,81 +1,91 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import NavLogo from "@/components/NavLogo";
 import MiningBadge from "@/components/MiningBadge";
+import SiteHeader from "@/components/SiteHeader";
 
 export const metadata: Metadata = {
-  title: "The Manifesto | Unmasked Words",
+  title: "The Raw Protocol — Manifesto",
   description:
     "Radical honesty. No profiles. No filters. No masks. Read the Raw Protocol — the founding manifesto of UnmaskedWords.",
+  keywords: ["manifesto", "radical honesty", "anonymity", "raw protocol", "no filters", "unmasked", "anonymous writing", "brutalist web", "digital privacy", "free speech online"],
+  alternates: { canonical: "https://unmaskedwords.com/about" },
   openGraph: {
-    title: "The Manifesto | Unmasked Words",
+    title: "The Raw Protocol — Manifesto | UnmaskedWords",
     description:
       "Take off the mask. Speak the truth. Even if your voice shakes.",
     url: "https://unmaskedwords.com/about",
     siteName: "UnmaskedWords",
     type: "article",
-    images: [{ url: "/og-image.png", width: 1200, height: 630 }],
+    locale: "en_US",
+    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "UnmaskedWords Manifesto" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "The Manifesto | Unmasked Words",
-    description: "Take off the mask. Speak the truth. Even if your voice shakes.",
+    title: "The Raw Protocol — Manifesto | UnmaskedWords",
+    description: "Take off the mask. Speak the truth. Even if your voice shakes. Read the Raw Protocol — the founding manifesto of UnmaskedWords.",
+    images: ["/og-image.png"],
   },
 };
 
 const sections = [
   {
-    body: "In a world of synthetic perfection and algorithmic filters, the truth has become a luxury.",
+    num: "01",
+    body: "In a world of synthetic perfection and algorithmic filters,\nthe truth has become rare — dressed up, toned down, made acceptable.",
   },
   {
-    body: "We wear masks to fit in, to be liked, to survive.\nBut masks are heavy.",
+    num: "02",
+    body: "We wear masks to fit in. To be liked. To survive.\nThe mask becomes the face.\nThe face becomes the lie.",
   },
   {
-    body: "Unmasked Words is not a social network.\nIt is a digital void.",
+    num: "03",
+    body: "Unmasked Words is not a social network.\nIt is a confessional without absolution.\nA void that holds your words without judgment.",
   },
   {
-    body: "Here, there are no profiles to polish, no followers to impress, and no filters to hide behind.",
+    num: "04",
+    body: "No profiles to polish. No followers to count.\nNo algorithm deciding if your truth deserves to be heard.\nEvery word floats in the same darkness.",
   },
   {
-    heading: "This platform is powered by the same decentralization that fuels Bitcoin.",
-    body: null,
+    num: "05",
+    heading: "This platform runs on decentralized infrastructure — the same principles as Bitcoin.",
+    body: "No single owner. No single point of failure. No single censor.",
   },
   {
-    label: "Anonymity as a Shield",
-    body: "Your identity belongs to you; your words belong to the world.",
+    num: "06",
+    label: "Anonymity as Shield",
+    body: "Your identity belongs to you.\nYour words belong to the world.",
   },
   {
+    num: "07",
     label: "Raw Honesty",
-    body: "If it's not real, it doesn't belong here.",
+    body: "If it isn't real, it doesn't belong here.\nThe void rejects performance.",
   },
   {
+    num: "08",
     label: "Decentralized Truth",
-    body: "Hosted on independent infrastructure, fueled by mining, governed by transparency.",
+    body: "No server owns your confession.\nNo algorithm decides its worth.\nJust the words — free, equal, permanent.",
   },
 ];
 
 export default function AboutPage() {
   return (
     <main className="min-h-screen bg-[#0a0a0a] flex flex-col">
-      {/* Nav */}
-      <header className="border-b border-[#1a1a1a] px-6 py-5">
-        <div className="max-w-2xl mx-auto flex items-center justify-between">
-          <NavLogo />
+      <SiteHeader
+        right={
           <Link
             href="/"
-            className="font-mono text-[#555555] text-xs tracking-widest uppercase hover:text-[#f0f0f0] transition-colors"
+            className="font-mono text-[#888888] text-xs tracking-widest uppercase hover:text-[#f0f0f0] transition-colors"
           >
             ← feed
           </Link>
-        </div>
-      </header>
+        }
+      />
 
       {/* Content */}
       <article className="flex-1 flex flex-col items-center justify-center px-6 py-20">
         <div className="w-full max-w-xl text-center">
 
           {/* Title */}
-          <p className="font-mono text-[#555555] text-xs tracking-widest uppercase mb-6">
+          <p className="font-mono text-[#888888] text-xs tracking-widest uppercase mb-6">
             // the raw protocol
           </p>
           <h1
@@ -86,9 +96,12 @@ export default function AboutPage() {
           </h1>
 
           {/* Manifesto sections */}
-          <div className="flex flex-col gap-12">
+          <div className="flex flex-col gap-0">
             {sections.map((s, i) => (
-              <div key={i}>
+              <div key={i} className="text-left border-t border-[#1a1a1a] pt-8">
+                <p className="font-mono text-[#888888] text-[10px] tracking-widest mb-4">
+                  [{s.num}]
+                </p>
                 {s.heading && (
                   <p className="font-mono text-[#f0f0f0] text-base leading-relaxed">
                     {s.heading}
@@ -115,7 +128,7 @@ export default function AboutPage() {
               Speak the truth.<br />
               <span className="text-[#ff3c00]">Even if your voice shakes.</span>
             </p>
-            <p className="font-mono text-[#333333] text-2xl mt-6 tracking-widest">
+            <p className="font-mono text-[#888888] text-2xl mt-6 tracking-widest">
               [<span className="cursor-blink text-[#ff3c00]">|</span>]
             </p>
           </div>
@@ -138,7 +151,7 @@ export default function AboutPage() {
       {/* Footer */}
       <footer className="border-t border-[#1a1a1a] px-6 py-4">
         <div className="max-w-2xl mx-auto">
-          <p className="font-mono text-[#444444] text-xs text-center tracking-widest">
+          <p aria-hidden="true" className="font-mono text-[#444444] text-xs text-center tracking-widest">
             NO ACCOUNTS. NO TRACKING. NO FILTERS.
           </p>
         </div>

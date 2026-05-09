@@ -2,7 +2,8 @@ import { createPocketBase, type Post } from "@/lib/pocketbase";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import NavLogo from "@/components/NavLogo";
+import SiteHeader from "@/components/SiteHeader";
+import PostReactions from "@/components/PostReactions";
 
 interface Props {
   params: Promise<{ id: string }>;
@@ -22,32 +23,31 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = await getPost(id);
 
   if (!post) {
-    return { title: "Post not found — UnmaskedWords" };
+    return { title: "Post not found" };
   }
 
-  const excerpt = post.content.slice(0, 100) + (post.content.length > 100 ? "..." : "");
+  const excerpt = post.content.slice(0, 155) + (post.content.length > 155 ? "..." : "");
+  const titleExcerpt = post.content.slice(0, 60) + (post.content.length > 60 ? "..." : "");
+  const publishedTime = post.created ? new Date(post.created).toISOString() : undefined;
 
   return {
-    title: `Unmasked Truth #${id} — UnmaskedWords`,
+    title: titleExcerpt,
     description: excerpt,
+    keywords: ["anonymous thought", "unmasked", "confession", "raw truth"],
+    alternates: { canonical: `https://unmaskedwords.com/post/${id}` },
     openGraph: {
-      title: `Unmasked Truth #${id}`,
+      title: titleExcerpt,
       description: excerpt,
       url: `https://unmaskedwords.com/post/${id}`,
       siteName: "UnmaskedWords",
       type: "article",
-      images: [
-        {
-          url: "https://unmaskedwords.com/og-image.png",
-          width: 1200,
-          height: 630,
-          alt: "UnmaskedWords",
-        },
-      ],
+      locale: "en_US",
+      publishedTime,
+      images: [{ url: "https://unmaskedwords.com/og-image.png", width: 1200, height: 630, alt: "UnmaskedWords — Say it without a face" }],
     },
     twitter: {
       card: "summary_large_image",
-      title: `Unmasked Truth #${id}`,
+      title: titleExcerpt,
       description: excerpt,
       images: ["https://unmaskedwords.com/og-image.png"],
     },
@@ -60,26 +60,50 @@ export default async function PostPage({ params }: Props) {
 
   if (!post) notFound();
 
+  const jsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      headline: post.content.slice(0, 110),
+      description: post.content.slice(0, 155),
+      url: `https://unmaskedwords.com/post/${id}`,
+      datePublished: post.created ? new Date(post.created).toISOString() : undefined,
+      author: { "@type": "Person", name: post.alias || "Anonymous" },
+      publisher: { "@type": "Organization", name: "UnmaskedWords", url: "https://unmaskedwords.com" },
+      inLanguage: "en-US",
+      isPartOf: { "@type": "WebSite", name: "UnmaskedWords", url: "https://unmaskedwords.com" },
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: "https://unmaskedwords.com" },
+        { "@type": "ListItem", position: 2, name: "Post", item: `https://unmaskedwords.com/post/${id}` },
+      ],
+    },
+  ];
+
   return (
     <main className="min-h-screen bg-[#0a0a0a] flex flex-col">
-      <header className="border-b border-[#1a1a1a] px-6 py-5">
-        <div className="max-w-2xl mx-auto flex items-baseline justify-between">
-          <div className="flex items-center gap-4">
-            <NavLogo />
-            <span className="font-mono font-black text-[#f0f0f0] tracking-tight" style={{ fontSize: "clamp(1.1rem, 3.5vw, 1.6rem)" }}>
-              UNMASKED<span className="text-[#ff3c00]">WORDS</span>
-            </span>
-          </div>
-          <Link href="/" className="font-mono text-[#333333] text-xs tracking-widest uppercase hover:text-[#555555] transition-colors">
-            ← back to feed
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <SiteHeader
+        right={
+          <Link
+            href="/"
+            className="font-mono text-[#888888] text-xs tracking-widest uppercase hover:text-[#f0f0f0] transition-colors"
+          >
+            ← feed
           </Link>
-        </div>
-      </header>
+        }
+      />
 
       <section className="flex-1 px-6 py-12">
         <div className="max-w-2xl mx-auto">
-          <p className="font-mono text-[#333333] text-xs tracking-widest uppercase mb-6">
-            // unmasked truth #{id}
+          <p className="font-mono text-[#888888] text-xs tracking-widest uppercase mb-6">
+            // truth #{id}
           </p>
           <blockquote className="border-l-2 border-[#ff3c00] pl-6">
             <p
@@ -92,12 +116,13 @@ export default async function PostPage({ params }: Props) {
               — {post.alias || "Anonymous"}
             </footer>
           </blockquote>
+          <PostReactions post={post} />
         </div>
       </section>
 
       <footer className="border-t border-[#1a1a1a] px-6 py-4">
         <div className="max-w-2xl mx-auto">
-          <p className="font-mono text-[#444444] text-xs text-center tracking-widest">
+          <p aria-hidden="true" className="font-mono text-[#444444] text-xs text-center tracking-widest">
             NO ACCOUNTS. NO TRACKING. NO FILTERS.
           </p>
         </div>

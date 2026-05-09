@@ -23,7 +23,7 @@ export default function VisitorCount() {
   return (
     <div className={`flex items-center gap-1.5 ${count === null ? "invisible" : ""}`}>
       <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#00ff88] animate-pulse" />
-      <span className="font-mono text-[#555555] text-xs tabular-nums">
+      <span className="font-mono text-[#888888] text-xs tabular-nums">
         {count} online
       </span>
     </div>

@@ -75,7 +75,7 @@ export default function ShareMenu({ postId, content }: ShareMenuProps) {
       <div className="relative">
         <button
           onClick={() => setOpen((v) => !v)}
-          className="flex items-center gap-1 font-mono text-[10px] text-[#2a2a2a] hover:text-[#555555] transition-colors"
+          className="flex items-center gap-1 font-mono text-[10px] text-[#888888] hover:text-[#aaaaaa] transition-colors"
           title="Share"
         >
           <Share2 size={11} />
@@ -85,7 +85,7 @@ export default function ShareMenu({ postId, content }: ShareMenuProps) {
         {open && (
           <>
             <div className="fixed inset-0 z-10" onClick={() => setOpen(false)} />
-            <div className="absolute bottom-6 left-0 z-20 flex items-center border border-[#2a2a2a] bg-[#0f0f0f]">
+            <div className="absolute bottom-6 right-0 z-20 flex items-center border border-[#2a2a2a] bg-[#0f0f0f]">
               {shareLinks.map(({ label, icon, href }) => (
                 <a
                   key={label}
@@ -93,7 +93,7 @@ export default function ShareMenu({ postId, content }: ShareMenuProps) {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => setOpen(false)}
-                  className="flex items-center justify-center w-9 h-9 text-[#555555] hover:text-[#f0f0f0] hover:bg-[#1a1a1a] transition-colors border-r border-[#2a2a2a]"
+                  className="flex items-center justify-center w-9 h-9 text-[#888888] hover:text-[#f0f0f0] hover:bg-[#1a1a1a] transition-colors border-r border-[#2a2a2a]"
                   title={label}
                 >
                   {icon}
@@ -101,7 +101,7 @@ export default function ShareMenu({ postId, content }: ShareMenuProps) {
               ))}
               <button
                 onClick={copyLink}
-                className="flex items-center justify-center w-9 h-9 text-[#555555] hover:text-[#f0f0f0] hover:bg-[#1a1a1a] transition-colors"
+                className="flex items-center justify-center w-9 h-9 text-[#888888] hover:text-[#f0f0f0] hover:bg-[#1a1a1a] transition-colors"
                 title="Copy link"
               >
                 <Copy size={13} />

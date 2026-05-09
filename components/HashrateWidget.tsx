@@ -29,7 +29,7 @@ export default function HashrateWidget() {
   return (
     <div className="fixed bottom-4 left-4 z-50 font-mono text-[10px] tracking-widest select-none">
       <div className="border border-[#2a2a2a] bg-[#0a0a0a] px-3 py-2 flex flex-col gap-1">
-        <span className="text-[#666666] uppercase">// btc network</span>
+        <span className="text-[#888888] uppercase">// btc network</span>
         <div className="flex items-center gap-2">
           {!stale && (
             <span
@@ -37,7 +37,7 @@ export default function HashrateWidget() {
               style={{ animation: "mining-pulse 3s ease-in-out infinite" }}
             />
           )}
-          <span className={stale ? "text-[#333333]" : "text-[#f0f0f0]"}>
+          <span className={stale ? "text-[#888888]" : "text-[#f0f0f0]"}>
             {stale ? "-- EH/s" : `${ehs} EH/s`}
           </span>
         </div>

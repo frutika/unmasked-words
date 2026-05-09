@@ -60,3 +60,74 @@ textarea:focus {
   0%, 100% { opacity: 0.5; }
   50%       { opacity: 1; }
 }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.35s ease forwards;
+}
+
+@keyframes mirrorReveal {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.mirror-reveal {
+  opacity: 0;
+  animation: mirrorReveal 0.7s ease forwards;
+}
+
+@keyframes mirrorScan {
+  0%   { width: 0%; opacity: 1; }
+  80%  { width: 100%; opacity: 1; }
+  100% { width: 100%; opacity: 0; }
+}
+
+.mirror-scan::after {
+  content: '';
+  display: block;
+  height: 1px;
+  background: #ff3c00;
+  animation: mirrorScan 2.2s ease forwards;
+}
+
+@keyframes mirrorPulse {
+  0%, 100% { opacity: 0.3; }
+  50%       { opacity: 0.8; }
+}
+
+.mirror-pulse {
+  animation: mirrorPulse 1.8s ease-in-out infinite;
+}
+
+@keyframes manifestoReveal {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.creed-line {
+  opacity: 0;
+  animation: manifestoReveal 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes ritualPulse {
+  0%, 100% { opacity: 0.15; }
+  50%       { opacity: 1; }
+}
+
+.ritual-pulse {
+  animation: ritualPulse 2.6s ease-in-out infinite;
+}
+
+@keyframes ritualSweep {
+  from { transform: scaleX(0); opacity: 0; }
+  to   { transform: scaleX(1); opacity: 1; }
+}
+
+.ritual-sweep {
+  animation: ritualSweep 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transform-origin: left center;
+}

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import SiteHeader from "@/components/SiteHeader";
 import CreedClient from "@/components/CreedClient";
+import SiteFooter from "@/components/SiteFooter";
 
 export const metadata: Metadata = {
   title: "Creed — Distill Your Truth",
@@ -95,13 +96,7 @@ export default function CreedPage() {
         </div>
       </section>
 
-      <footer className="border-t border-[#111111] px-6 py-4">
-        <div className="max-w-2xl mx-auto">
-          <p aria-hidden="true" className="font-mono text-[#1e1e1e] text-xs text-center tracking-widest">
-            NO ACCOUNTS. NO TRACKING. NO FILTERS.
-          </p>
-        </div>
-      </footer>
+      <SiteFooter />
     </main>
   );
 }

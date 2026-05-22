@@ -54,6 +54,12 @@ export default function SiteHeader({ subtitle, right }: SiteHeaderProps) {
 
         {/* Right: page-specific content + BTC */}
         <div className="flex items-center gap-3 flex-shrink-0">
+          <Link
+            href="/anonymous-thoughts"
+            className="font-mono text-[#888888] text-[10px] tracking-widest uppercase hover:text-[#ff3c00] transition-colors hidden sm:inline"
+          >
+            topics
+          </Link>
           {right}
           {(ehs !== null || stale) && (
             <div className="flex items-center gap-1.5 border-l border-[#1a1a1a] pl-3">

@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { createPocketBase, type Post } from "@/lib/pocketbase";
 import { THREADS } from "@/lib/threads";
+import { TOPICS } from "@/lib/topics";
 
 export const dynamic = "force-dynamic";
 
@@ -24,13 +25,32 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const staticPages: MetadataRoute.Sitemap = [
     { url: BASE, lastModified: new Date(), changeFrequency: "always", priority: 1 },
-    { url: `${BASE}/about`,     lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
-    { url: `${BASE}/creed`,     lastModified: new Date(), changeFrequency: "monthly", priority: 0.85 },
-    { url: `${BASE}/threads`, lastModified: new Date(), changeFrequency: "daily", priority: 0.9 },
-    { url: `${BASE}/duel`,    lastModified: new Date(), changeFrequency: "always", priority: 0.9 },
-    { url: `${BASE}/box`,     lastModified: new Date(), changeFrequency: "always", priority: 0.9 },
-    { url: `${BASE}/mirror`,  lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE}/about`,                   lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
+    { url: `${BASE}/how-it-works`,            lastModified: new Date(), changeFrequency: "monthly", priority: 0.75 },
+    { url: `${BASE}/privacy`,                 lastModified: new Date(), changeFrequency: "yearly",  priority: 0.5 },
+    { url: `${BASE}/creed`,                   lastModified: new Date(), changeFrequency: "monthly", priority: 0.85 },
+    { url: `${BASE}/threads`,                 lastModified: new Date(), changeFrequency: "daily",   priority: 0.9 },
+    { url: `${BASE}/duel`,                    lastModified: new Date(), changeFrequency: "always",  priority: 0.9 },
+    { url: `${BASE}/box`,                     lastModified: new Date(), changeFrequency: "always",  priority: 0.9 },
+    { url: `${BASE}/mirror`,                  lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE}/anonymous-confessions`,   lastModified: new Date(), changeFrequency: "hourly",  priority: 0.85 },
+    { url: `${BASE}/deep-thoughts`,           lastModified: new Date(), changeFrequency: "hourly",  priority: 0.85 },
+    { url: `${BASE}/late-night-thoughts`,     lastModified: new Date(), changeFrequency: "hourly",  priority: 0.85 },
+    { url: `${BASE}/fear-confessions`,        lastModified: new Date(), changeFrequency: "hourly",  priority: 0.85 },
+    { url: `${BASE}/emotional-journal`,       lastModified: new Date(), changeFrequency: "hourly",  priority: 0.85 },
+    { url: `${BASE}/raw-thoughts`,            lastModified: new Date(), changeFrequency: "hourly",  priority: 0.85 },
   ];
+
+  const topicIndexPage: MetadataRoute.Sitemap = [
+    { url: `${BASE}/anonymous-thoughts`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.9 },
+  ];
+
+  const topicPages: MetadataRoute.Sitemap = TOPICS.map((t) => ({
+    url: `${BASE}/anonymous-thoughts/${t.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "hourly" as const,
+    priority: 0.8,
+  }));
 
   const threadPages: MetadataRoute.Sitemap = THREADS.map((t) => ({
     url: `${BASE}/threads/${t.slug}`,
@@ -46,5 +66,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.5,
   }));
 
-  return [...staticPages, ...threadPages, ...postPages];
+  return [...staticPages, ...topicIndexPage, ...topicPages, ...threadPages, ...postPages];
 }

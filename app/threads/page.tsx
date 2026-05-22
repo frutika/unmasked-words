@@ -3,18 +3,27 @@ import Link from "next/link";
 import SiteHeader from "@/components/SiteHeader";
 import { THREADS } from "@/lib/threads";
 import { createPocketBase } from "@/lib/pocketbase";
+import SiteFooter from "@/components/SiteFooter";
 
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Deep Threads — Anonymous Emotional Voids",
+  title: "Deep Threads — Anonymous Confessions by Emotion",
   description:
-    "Enter a thread. Each one is a void built around a single emotional truth — shame, rage, grief, desire. No profiles. No filters. Just raw voices.",
-  keywords: ["anonymous threads", "emotional voids", "shame thread", "rage thread", "grief", "confession", "anonymous voices"],
+    "Anonymous threads for every emotion. Shame, rage, fear, grief, desire, longing. Real confessions from strangers with no account required. Enter a thread. Speak. Disappear.",
+  keywords: [
+    "anonymous emotional threads",
+    "anonymous shame confessions",
+    "anonymous grief thread",
+    "anonymous fear confessions",
+    "anonymous love confessions",
+    "anonymous rage thread",
+    "anonymous confession by topic",
+  ],
   alternates: { canonical: "https://unmaskedwords.com/threads" },
   openGraph: {
-    title: "Deep Threads — Anonymous Emotional Voids | UnmaskedWords",
-    description: "Enter a void built around a single emotional truth. Shame, rage, grief, desire. Anonymous voices speaking without a face. No profiles, no filters.",
+    title: "Deep Threads — Anonymous Confessions by Emotion | UnmaskedWords",
+    description: "Anonymous threads for every emotion. Shame, rage, fear, grief, desire, longing. Real confessions, no account required. Enter. Speak. Disappear.",
     url: "https://unmaskedwords.com/threads",
     siteName: "UnmaskedWords",
     type: "website",
@@ -23,8 +32,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Deep Threads — Anonymous Emotional Voids | UnmaskedWords",
-    description: "Enter a void built around a single emotional truth. Shame, rage, grief, desire. Anonymous voices speaking without a face. No profiles, no filters.",
+    title: "Deep Threads — Anonymous Confessions by Emotion | UnmaskedWords",
+    description: "Anonymous threads for every emotion. Shame, rage, fear, grief, desire. Real confessions, no account required.",
     images: ["/og-image.png"],
   },
 };
@@ -147,13 +156,7 @@ export default async function ThreadsPage() {
         </div>
       </section>
 
-      <footer className="border-t border-[#1a1a1a] px-6 py-4">
-        <div className="max-w-2xl mx-auto">
-          <p aria-hidden="true" className="font-mono text-[#333333] text-xs text-center tracking-widest">
-            NO ACCOUNTS. NO TRACKING. NO FILTERS.
-          </p>
-        </div>
-      </footer>
+      <SiteFooter />
     </main>
   );
 }

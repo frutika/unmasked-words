@@ -225,6 +225,12 @@ export default async function HomePage() {
             <div className="flex items-center gap-4">
               <MiningBadge />
               <Link
+                href="/anonymous-thoughts"
+                className="font-mono text-[#888888] text-xs tracking-widest uppercase hover:text-[#ff3c00] transition-colors"
+              >
+                topics →
+              </Link>
+              <Link
                 href="/mirror"
                 className="font-mono text-[#888888] text-xs tracking-widest uppercase hover:text-[#ff3c00] transition-colors"
               >
@@ -253,6 +259,18 @@ export default async function HomePage() {
                 className="font-mono text-[#888888] text-xs tracking-widest uppercase hover:text-[#ff3c00] transition-colors"
               >
                 threads →
+              </Link>
+              <Link
+                href="/how-it-works"
+                className="font-mono text-[#888888] text-xs tracking-widest uppercase hover:text-[#ff3c00] transition-colors"
+              >
+                how it works →
+              </Link>
+              <Link
+                href="/privacy"
+                className="font-mono text-[#888888] text-xs tracking-widest uppercase hover:text-[#ff3c00] transition-colors"
+              >
+                privacy →
               </Link>
               <Link
                 href="/about"

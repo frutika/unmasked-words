@@ -5,6 +5,7 @@ import BoxInput from "@/components/BoxInput";
 import BoxVoicesFeed from "@/components/BoxVoicesFeed";
 import { pbGet } from "@/lib/pb-http";
 import type { BoxVoice } from "@/lib/pocketbase";
+import SiteFooter from "@/components/SiteFooter";
 
 export const dynamic = "force-dynamic";
 
@@ -104,13 +105,7 @@ export default async function BoxPage() {
         </div>
       </section>
 
-      <footer className="border-t border-[#1a1a1a] px-6 py-4">
-        <div className="max-w-2xl mx-auto">
-          <p aria-hidden="true" className="font-mono text-[#333333] text-xs text-center tracking-widest">
-            NO ACCOUNTS. NO TRACKING. NO FILTERS.
-          </p>
-        </div>
-      </footer>
+      <SiteFooter />
     </main>
   );
 }

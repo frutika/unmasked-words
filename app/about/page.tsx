@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import MiningBadge from "@/components/MiningBadge";
 import SiteHeader from "@/components/SiteHeader";
+import SiteFooter from "@/components/SiteFooter";
 
 export const metadata: Metadata = {
   title: "The Raw Protocol — Manifesto",
@@ -149,13 +150,7 @@ export default function AboutPage() {
       </article>
 
       {/* Footer */}
-      <footer className="border-t border-[#1a1a1a] px-6 py-4">
-        <div className="max-w-2xl mx-auto">
-          <p aria-hidden="true" className="font-mono text-[#444444] text-xs text-center tracking-widest">
-            NO ACCOUNTS. NO TRACKING. NO FILTERS.
-          </p>
-        </div>
-      </footer>
+      <SiteFooter />
     </main>
   );
 }

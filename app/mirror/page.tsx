@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import SiteHeader from "@/components/SiteHeader";
 import MirrorClient from "@/components/MirrorClient";
+import SiteFooter from "@/components/SiteFooter";
 
 export const metadata: Metadata = {
   title: "Mirror Mode — AI Reflection of Your Thoughts",
@@ -74,13 +75,7 @@ export default function MirrorPage() {
         </div>
       </section>
 
-      <footer className="border-t border-[#111111] px-6 py-4">
-        <div className="max-w-2xl mx-auto">
-          <p aria-hidden="true" className="font-mono text-[#222222] text-xs text-center tracking-widest">
-            NO ACCOUNTS. NO TRACKING. NO FILTERS.
-          </p>
-        </div>
-      </footer>
+      <SiteFooter />
     </main>
   );
 }

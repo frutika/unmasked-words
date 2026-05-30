@@ -10,6 +10,7 @@ export const metadata: Metadata = {
     "Radical honesty. No profiles. No filters. No masks. Read the Raw Protocol — the founding manifesto of UnmaskedWords.",
   keywords: ["manifesto", "radical honesty", "anonymity", "raw protocol", "no filters", "unmasked", "anonymous writing", "brutalist web", "digital privacy", "free speech online"],
   alternates: { canonical: "https://unmaskedwords.com/about" },
+  robots: { index: true, follow: true },
   openGraph: {
     title: "The Raw Protocol — Manifesto | UnmaskedWords",
     description:
@@ -67,9 +68,38 @@ const sections = [
   },
 ];
 
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    name: "The Raw Protocol — Manifesto",
+    description: "The founding manifesto of UnmaskedWords. Radical honesty. No profiles. No filters. No masks.",
+    url: "https://unmaskedwords.com/about",
+    isPartOf: { "@type": "WebSite", name: "UnmaskedWords", url: "https://unmaskedwords.com" },
+    inLanguage: "en-US",
+    breadcrumb: {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: "https://unmaskedwords.com" },
+        { "@type": "ListItem", position: 2, name: "Manifesto", item: "https://unmaskedwords.com/about" },
+      ],
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "UnmaskedWords",
+    url: "https://unmaskedwords.com",
+    description: "A brutalist anonymous platform to post raw thoughts in real-time. No account. No trace. No filters.",
+    foundingDate: "2024",
+    contactPoint: { "@type": "ContactPoint", email: "root@unmaskedwords.com", contactType: "customer support" },
+  },
+];
+
 export default function AboutPage() {
   return (
     <main className="min-h-screen bg-[#0a0a0a] flex flex-col">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <SiteHeader
         right={
           <Link

@@ -9,6 +9,13 @@ export const metadata: Metadata = {
     "How UnmaskedWords works. Post anonymously in seconds. No account, no sign-up, no email. Your thought appears in the live feed and vanishes into the void.",
   keywords: ["how to post anonymously", "anonymous posting platform", "no account anonymous", "how unmaskedwords works"],
   alternates: { canonical: "https://unmaskedwords.com/how-it-works" },
+  robots: { index: true, follow: true },
+  twitter: {
+    card: "summary_large_image",
+    title: "How It Works — Anonymous Posting, Explained | UnmaskedWords",
+    description: "Post anonymously in seconds. No account, no sign-up, no email. Just type and post.",
+    images: ["/og-image.png"],
+  },
   openGraph: {
     title: "How It Works — Anonymous Posting, Explained | UnmaskedWords",
     description: "Post anonymously in seconds. No account, no sign-up, no email. Just type and post.",
@@ -71,15 +78,38 @@ const faqs = [
 ];
 
 export default function HowItWorksPage() {
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: faqs.map((faq) => ({
-      "@type": "Question",
-      name: faq.q,
-      acceptedAnswer: { "@type": "Answer", text: faq.a },
-    })),
-  };
+  const jsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      name: "How to Post Anonymously on UnmaskedWords",
+      description: "Post a raw thought anonymously in seconds. No account, no email, no sign-up.",
+      url: "https://unmaskedwords.com/how-it-works",
+      step: steps.map((s, i) => ({
+        "@type": "HowToStep",
+        position: i + 1,
+        name: s.heading,
+        text: s.body,
+      })),
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: faqs.map((faq) => ({
+        "@type": "Question",
+        name: faq.q,
+        acceptedAnswer: { "@type": "Answer", text: faq.a },
+      })),
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: "https://unmaskedwords.com" },
+        { "@type": "ListItem", position: 2, name: "How It Works", item: "https://unmaskedwords.com/how-it-works" },
+      ],
+    },
+  ];
 
   return (
     <main className="min-h-screen bg-[#0a0a0a] flex flex-col">

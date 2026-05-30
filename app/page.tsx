@@ -12,6 +12,7 @@ export const metadata: Metadata = {
     "real-time feed", "brutalist social", "raw honesty", "speak without identity",
   ],
   alternates: { canonical: "https://unmaskedwords.com" },
+  robots: { index: true, follow: true },
   openGraph: {
     title: "UnmaskedWords — Say it without a face",
     description: "Post your unmasked truth. No account required. No trace left behind. No filters. Just raw, anonymous honesty in real time.",

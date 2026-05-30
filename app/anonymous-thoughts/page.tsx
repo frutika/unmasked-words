@@ -15,6 +15,7 @@ export const metadata: Metadata = {
     "topics for anonymous sharing",
   ],
   alternates: { canonical: "https://unmaskedwords.com/anonymous-thoughts" },
+  robots: { index: true, follow: true },
   openGraph: {
     title: "Anonymous Thoughts — Browse by Topic | UnmaskedWords",
     description:
@@ -35,21 +36,31 @@ export const metadata: Metadata = {
 
 const superTopicTopics = new Set(SUPER_TOPICS.flatMap((st) => st.topics));
 
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "ItemList",
-  name: "Anonymous Thoughts — Browse by Topic",
-  description: "Browse anonymous thoughts by topic on UnmaskedWords.",
-  url: "https://unmaskedwords.com/anonymous-thoughts",
-  numberOfItems: TOPICS.length,
-  itemListElement: TOPICS.map((t, i) => ({
-    "@type": "ListItem",
-    position: i + 1,
-    name: `Anonymous Thoughts About ${t.title}`,
-    description: t.description,
-    url: `https://unmaskedwords.com/anonymous-thoughts/${t.slug}`,
-  })),
-};
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Anonymous Thoughts — Browse by Topic",
+    description: "Browse anonymous thoughts by topic on UnmaskedWords.",
+    url: "https://unmaskedwords.com/anonymous-thoughts",
+    numberOfItems: TOPICS.length,
+    itemListElement: TOPICS.map((t, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: `Anonymous Thoughts About ${t.title}`,
+      description: t.description,
+      url: `https://unmaskedwords.com/anonymous-thoughts/${t.slug}`,
+    })),
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://unmaskedwords.com" },
+      { "@type": "ListItem", position: 2, name: "Anonymous Thoughts", item: "https://unmaskedwords.com/anonymous-thoughts" },
+    ],
+  },
+];
 
 export default function AnonymousThoughtsIndexPage() {
   const remainingTopics = TOPICS.filter((t) => !superTopicTopics.has(t.slug));

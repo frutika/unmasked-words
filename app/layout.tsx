@@ -54,11 +54,15 @@ const jsonLd = [
     url: SITE_URL,
     description: "A brutalist anonymous platform to post raw thoughts in real-time. No account. No trace. No filters.",
     inLanguage: "en-US",
-    potentialAction: {
-      "@type": "SearchAction",
-      target: { "@type": "EntryPoint", urlTemplate: `${SITE_URL}/post/{id}` },
-      "query-input": "required name=id",
-    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "DiscussionForum",
+    name: "UnmaskedWords",
+    url: SITE_URL,
+    description: "Anonymous discussion forum for raw, unfiltered thoughts. No account. No trace. No filters.",
+    inLanguage: "en-US",
+    isPartOf: { "@type": "WebSite", name: "UnmaskedWords", url: SITE_URL },
   },
   {
     "@context": "https://schema.org",
@@ -77,11 +81,7 @@ const jsonLd = [
       "Anonymous Duel — two strangers, one question",
       "Deep Threads — themed emotional voids",
     ],
-    publisher: {
-      "@type": "Organization",
-      name: "UnmaskedWords",
-      url: SITE_URL,
-    },
+    publisher: { "@type": "Organization", name: "UnmaskedWords", url: SITE_URL },
   },
 ];
 

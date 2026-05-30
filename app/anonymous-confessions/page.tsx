@@ -132,7 +132,7 @@ export default async function AnonymousConfessionsPage() {
               href="/"
               className="font-mono font-bold text-xs tracking-widest uppercase px-6 py-3 bg-[#ff3c00] text-black hover:bg-[#f0f0f0] transition-colors duration-150"
             >
-              ENTER THE VOID →
+              Heartbreak signals
             </Link>
             <Link
               href="/threads/confession"

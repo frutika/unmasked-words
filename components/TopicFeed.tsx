@@ -51,13 +51,13 @@ export default function TopicFeed({ topic }: { topic: string }) {
     return (
       <div className="space-y-4">
         <p className="font-mono text-[#444444] text-xs leading-relaxed">
-          No thoughts posted here yet.
+          No heartbreak signals yet.
         </p>
         <Link
           href={`/?topic=${topic}`}
           className="inline-block font-mono font-bold text-xs tracking-widest uppercase px-6 py-3 bg-[#ff3c00] text-black hover:bg-[#f0f0f0] transition-colors duration-150"
         >
-          ENTER THE VOID →
+          Heartbreak signals
         </Link>
       </div>
     );

@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { createPocketBase, type Post } from "@/lib/pocketbase";
 import { THREADS } from "@/lib/threads";
-import { TOPICS } from "@/lib/topics";
+import { TOPICS, SUPER_TOPICS } from "@/lib/topics";
 
 export const dynamic = "force-dynamic";
 
@@ -45,12 +45,23 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${BASE}/anonymous-thoughts`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.9 },
   ];
 
-  const topicPages: MetadataRoute.Sitemap = TOPICS.map((t) => ({
-    url: `${BASE}/anonymous-thoughts/${t.slug}`,
+  // Super topic hub pages (deduplicated — some slugs overlap with topic slugs e.g. "love")
+  const superTopicSlugs = new Set(SUPER_TOPICS.map((st) => st.slug.toLowerCase()));
+  const superTopicPages: MetadataRoute.Sitemap = SUPER_TOPICS.map((st) => ({
+    url: `${BASE}/anonymous-thoughts/${st.slug.toLowerCase()}`,
     lastModified: new Date(),
-    changeFrequency: "hourly" as const,
-    priority: 0.8,
+    changeFrequency: "weekly" as const,
+    priority: 0.9,
   }));
+
+  const topicPages: MetadataRoute.Sitemap = TOPICS
+    .filter((t) => !superTopicSlugs.has(t.slug))
+    .map((t) => ({
+      url: `${BASE}/anonymous-thoughts/${t.slug}`,
+      lastModified: new Date(),
+      changeFrequency: "hourly" as const,
+      priority: 0.8,
+    }));
 
   const threadPages: MetadataRoute.Sitemap = THREADS.map((t) => ({
     url: `${BASE}/threads/${t.slug}`,
@@ -66,5 +77,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.5,
   }));
 
-  return [...staticPages, ...topicIndexPage, ...topicPages, ...threadPages, ...postPages];
+  return [...staticPages, ...topicIndexPage, ...superTopicPages, ...topicPages, ...threadPages, ...postPages];
 }

@@ -342,17 +342,25 @@ function RegularTopicPage({ topic }: { topic: NonNullable<ReturnType<typeof getT
               <p key={i} className="font-mono text-[#888888] text-sm leading-relaxed">{line}</p>
             ))}
           </div>
-          <Link
-            href={`/?topic=${topic.slug}`}
-            className="font-mono font-bold text-xs tracking-widest uppercase px-6 py-3 bg-[#ff3c00] text-black hover:bg-[#f0f0f0] transition-colors duration-150"
-          >
-            Heartbreak signals
-          </Link>
+          <div className="flex gap-3 flex-wrap">
+            <Link
+              href={`/?topic=${topic.slug}`}
+              className="font-mono font-bold text-xs tracking-widest uppercase px-6 py-3 bg-[#ff3c00] text-black hover:bg-[#f0f0f0] transition-colors duration-150"
+            >
+              ENTER THE VOID →
+            </Link>
+            <Link
+              href="#signals"
+              className="font-mono font-bold text-xs tracking-widest uppercase px-6 py-3 border border-[#333333] text-[#888888] hover:text-[#f0f0f0] hover:border-[#888888] transition-colors duration-150"
+            >
+              Heartbreak signals
+            </Link>
+          </div>
         </div>
       </section>
 
       {/* Topic feed */}
-      <section className="flex-1 px-6 py-10">
+      <section id="signals" className="flex-1 px-6 py-10">
         <div className="max-w-2xl mx-auto">
           <p className="font-mono text-[#888888] text-xs tracking-widest uppercase mb-6">
             // {topic.title.toLowerCase()} signals

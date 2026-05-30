@@ -47,8 +47,8 @@ const sections = [
   },
   {
     num: "05",
-    heading: "This platform runs on decentralized infrastructure — the same principles as Bitcoin.",
-    body: "No single owner. No single point of failure. No single censor.",
+    heading: "This platform was built on the same idea that gave birth to Bitcoin:",
+    body: "Truth should not depend on permission.\n\nNo single owner.\nNo central authority.\nNo gatekeeper deciding what deserves to exist.\n\nOnly the signal.",
   },
   {
     num: "06",

@@ -46,7 +46,13 @@ The alias is not linked to any account. You can use a different alias every time
     heading: "Cookies and tracking",
     body: `UnmaskedWords does not use tracking cookies. No third-party analytics scripts (Google Analytics, Meta Pixel, etc.) are loaded on this site.
 
-Technical cookies may be set by the Next.js framework for session management purposes. These contain no personally identifiable information and are not used for advertising or behavioral tracking.
+Some technical session cookies may be created by the web framework that powers the site.
+
+These cookies do not identify you.
+They are not used for advertising.
+They are not used to build a profile about you.
+
+They exist only to keep the application functioning correctly.
 
 No data is sold to or shared with third parties for marketing purposes.`,
   },

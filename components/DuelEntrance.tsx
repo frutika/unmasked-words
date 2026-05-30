@@ -112,7 +112,9 @@ export default function DuelEntrance() {
           disabled={phase === "loading-question"}
           className="font-mono font-black text-sm tracking-widest uppercase px-10 py-4 bg-[#ff3c00] text-black hover:bg-[#f0f0f0] disabled:opacity-50 transition-colors duration-150"
         >
-          {phase === "loading-question" ? "ENTERING<span className='cursor-blink'>|</span>" : "ENTER THE DUEL"}
+          {phase === "loading-question" ? (
+            <>ENTERING<span className="cursor-blink">|</span></>
+          ) : "ENTER THE DUEL"}
         </button>
         {error && (
           <p className="font-mono text-xs text-[#ff3c00] mt-4">{error}</p>

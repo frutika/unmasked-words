@@ -108,9 +108,32 @@ export default function HowItWorksPage() {
             className="font-mono font-black text-[#f0f0f0] leading-none mb-16"
             style={{ fontSize: "clamp(2rem, 7vw, 3.5rem)", letterSpacing: "-0.03em" }}
           >
-            SIMPLE.<br />
-            <span className="text-[#ff3c00]">BY DESIGN.</span>
+            THE THOUGHT MATTERS.<br />
+            <span className="text-[#ff3c00]">NOT THE PERSON.</span>
           </h1>
+
+          {/* Why it exists */}
+          <div className="border-t border-[#1a1a1a] pt-12 mb-16">
+            <p className="font-mono text-[#f0f0f0] text-sm leading-loose mb-8">
+              Most people spend their lives performing.
+            </p>
+            <div className="flex flex-col gap-1 mb-8 pl-4 border-l-2 border-[#1a1a1a]">
+              {["For friends.", "For family.", "For work.", "For algorithms."].map((line) => (
+                <p key={line} className="font-mono text-[#555555] text-sm tracking-wide">{line}</p>
+              ))}
+            </div>
+            <p className="font-mono text-[#f0f0f0] text-sm leading-loose mb-8">
+              UnmaskedWords exists for the thoughts that survive when the performance ends.
+            </p>
+            <div className="flex flex-col gap-1 mb-8 pl-4 border-l-2 border-[#1a1a1a]">
+              {["No profile.", "No audience to impress.", "No identity to defend."].map((line) => (
+                <p key={line} className="font-mono text-[#555555] text-sm tracking-wide">{line}</p>
+              ))}
+            </div>
+            <p className="font-mono text-[#ff3c00] text-sm leading-loose">
+              Just the thing you actually wanted to say.
+            </p>
+          </div>
 
           {/* Steps */}
           <div className="flex flex-col mb-16">

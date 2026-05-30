@@ -4,10 +4,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { createPocketBase, type Post } from "@/lib/pocketbase";
-import { TOPICS, getTopic } from "@/lib/topics";
+import { TOPICS, SUPER_TOPICS, getTopic, getSuperTopicForTopic } from "@/lib/topics";
 import SiteHeader from "@/components/SiteHeader";
 import LandingPostsList from "@/components/LandingPostsList";
-import MiningBadge from "@/components/MiningBadge";
 import SiteFooter from "@/components/SiteFooter";
 
 interface Props {
@@ -77,6 +76,8 @@ export default async function TopicPage({ params }: Props) {
     .map((r) => TOPICS.find((t) => t.slug === r))
     .filter(Boolean) as typeof TOPICS;
 
+  const superTopicSlug = getSuperTopicForTopic(slug);
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "WebPage",
@@ -115,59 +116,49 @@ export default async function TopicPage({ params }: Props) {
       {/* Hero */}
       <section className="border-b border-[#1a1a1a] px-6 py-12">
         <div className="max-w-2xl mx-auto">
-          <p className="font-mono text-[#888888] text-xs tracking-widest uppercase mb-4">
-            // anonymous thoughts about
-          </p>
+          {superTopicSlug && (
+            <p className="font-mono text-[#ff3c00] text-[10px] tracking-widest uppercase mb-4">
+              {superTopicSlug}
+            </p>
+          )}
           <h1
-            className="font-mono font-black text-[#f0f0f0] leading-none mb-3"
-            style={{ fontSize: "clamp(2rem, 7vw, 3.5rem)", letterSpacing: "-0.03em" }}
+            className="font-mono font-black text-[#f0f0f0] leading-snug mb-8"
+            style={{ fontSize: "clamp(1.5rem, 5vw, 2.5rem)", letterSpacing: "-0.02em" }}
           >
-            {topic.title.toUpperCase()}
+            Anonymous thoughts about {topic.title.toLowerCase()}.
           </h1>
-          <p className="font-mono text-[#888888] text-sm">
-            {topic.description}
-          </p>
-        </div>
-      </section>
-
-      {/* Intro copy */}
-      <section className="border-b border-[#1a1a1a] px-6 py-10">
-        <div className="max-w-2xl mx-auto">
-          <div className="space-y-4">
-            {topic.intro.split("\n\n").map((paragraph, i) => (
-              <p key={i} className={`font-mono text-sm leading-relaxed ${i === 0 ? "text-[#aaaaaa]" : "text-[#888888]"}`}>
-                {paragraph}
+          <div className="flex flex-col gap-1 mb-10">
+            {topic.shortIntro.split("\n").map((line, i) => (
+              <p key={i} className="font-mono text-[#888888] text-sm leading-relaxed">
+                {line}
               </p>
             ))}
           </div>
-
-          <div className="flex gap-4 mt-8">
-            <Link
-              href="/"
-              className="font-mono font-bold text-xs tracking-widest uppercase px-6 py-3 bg-[#ff3c00] text-black hover:bg-[#f0f0f0] transition-colors duration-150"
-            >
-              POST ANONYMOUSLY →
-            </Link>
-          </div>
+          <Link
+            href="/"
+            className="font-mono font-bold text-xs tracking-widest uppercase px-6 py-3 bg-[#ff3c00] text-black hover:bg-[#f0f0f0] transition-colors duration-150"
+          >
+            POST ANONYMOUSLY →
+          </Link>
         </div>
       </section>
 
       {/* Live posts */}
-      <section className="flex-1 px-6 py-8">
+      <section className="flex-1 px-6 py-10">
         <div className="max-w-2xl mx-auto">
-          <p className="font-mono text-[#888888] text-xs tracking-widest uppercase mb-4">
-            // from the void — anonymous thoughts, posted without a face
+          <p className="font-mono text-[#888888] text-xs tracking-widest uppercase mb-6">
+            // live anonymous thoughts
           </p>
           <LandingPostsList posts={posts} />
         </div>
       </section>
 
-      {/* Related topics — internal linking */}
+      {/* Related voids */}
       {relatedTopics.length > 0 && (
         <section className="border-t border-[#1a1a1a] px-6 py-8">
           <div className="max-w-2xl mx-auto">
             <p className="font-mono text-[#888888] text-xs tracking-widest uppercase mb-4">
-              // related topics
+              // related voids
             </p>
             <div className="flex flex-wrap gap-2">
               {relatedTopics.map((related) => (
@@ -183,6 +174,17 @@ export default async function TopicPage({ params }: Props) {
           </div>
         </section>
       )}
+
+      {/* SEO copy — long intro, below fold */}
+      <section className="border-t border-[#1a1a1a] px-6 py-10">
+        <div className="max-w-2xl mx-auto space-y-4">
+          {topic.intro.split("\n\n").map((paragraph, i) => (
+            <p key={i} className="font-mono text-[#444444] text-xs leading-relaxed">
+              {paragraph}
+            </p>
+          ))}
+        </div>
+      </section>
 
       <SiteFooter />
     </main>

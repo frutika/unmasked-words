@@ -353,7 +353,7 @@ function RegularTopicPage({ topic }: { topic: NonNullable<ReturnType<typeof getT
               href="#signals"
               className="font-mono font-bold text-xs tracking-widest uppercase px-6 py-3 border border-[#333333] text-[#888888] hover:text-[#f0f0f0] hover:border-[#888888] transition-colors duration-150"
             >
-              Heartbreak signals
+              {topic.title} signals
             </Link>
           </div>
         </div>

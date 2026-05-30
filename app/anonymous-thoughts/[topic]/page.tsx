@@ -355,7 +355,7 @@ function RegularTopicPage({ topic }: { topic: NonNullable<ReturnType<typeof getT
       <section className="flex-1 px-6 py-10">
         <div className="max-w-2xl mx-auto">
           <p className="font-mono text-[#888888] text-xs tracking-widest uppercase mb-6">
-            // anonymous thoughts about {topic.title.toLowerCase()}
+            // {topic.title.toLowerCase()} signals
           </p>
           <TopicFeed topic={topic.slug} />
         </div>

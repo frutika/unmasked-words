@@ -342,20 +342,12 @@ function RegularTopicPage({ topic }: { topic: NonNullable<ReturnType<typeof getT
               <p key={i} className="font-mono text-[#888888] text-sm leading-relaxed">{line}</p>
             ))}
           </div>
-          <div className="flex gap-3 flex-wrap">
-            <Link
-              href={`/?topic=${topic.slug}`}
-              className="font-mono font-bold text-xs tracking-widest uppercase px-6 py-3 bg-[#ff3c00] text-black hover:bg-[#f0f0f0] transition-colors duration-150"
-            >
-              ENTER THE VOID →
-            </Link>
-            <Link
-              href="#signals"
-              className="font-mono font-bold text-xs tracking-widest uppercase px-6 py-3 border border-[#333333] text-[#888888] hover:text-[#f0f0f0] hover:border-[#888888] transition-colors duration-150"
-            >
-              {topic.title} signals
-            </Link>
-          </div>
+          <Link
+            href="#signals"
+            className="font-mono font-bold text-xs tracking-widest uppercase px-6 py-3 bg-[#ff3c00] text-black hover:bg-[#f0f0f0] transition-colors duration-150"
+          >
+            {topic.title} signals
+          </Link>
         </div>
       </section>
 

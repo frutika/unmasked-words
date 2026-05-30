@@ -261,17 +261,25 @@ function SuperTopicPage({ slug, superSlug }: { slug: string; superSlug: SuperTop
       {/* Other super topics */}
       <section className="border-t border-[#1a1a1a] px-6 py-8">
         <div className="max-w-2xl mx-auto">
-          <p className="font-mono text-[#888888] text-xs tracking-widest uppercase mb-4">
+          <p className="font-mono text-[#888888] text-xs tracking-widest uppercase mb-6">
             // other territories
           </p>
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-col divide-y divide-[#111111]">
             {SUPER_TOPICS.filter((st) => st.slug !== superSlug).map((st) => (
               <Link
                 key={st.slug}
                 href={`/anonymous-thoughts/${st.slug.toLowerCase()}`}
-                className="font-mono font-black text-xs tracking-widest uppercase px-5 py-3 border border-[#1a1a1a] text-[#888888] hover:text-[#ff3c00] hover:border-[#ff3c00] transition-colors duration-100"
+                className="group py-4 flex items-start justify-between gap-4 hover:bg-[#0d0d0d] -mx-2 px-2 transition-colors duration-100"
               >
-                {st.slug}
+                <div className="min-w-0">
+                  <p className="font-mono font-black text-xs tracking-widest uppercase text-[#888888] group-hover:text-[#ff3c00] transition-colors duration-100 mb-1">
+                    {st.slug}
+                  </p>
+                  <p className="font-mono text-[10px] text-[#444444] group-hover:text-[#555555] transition-colors duration-100">
+                    {SUPER_DESCRIPTIONS[st.slug as SuperTopicSlug]}
+                  </p>
+                </div>
+                <span className="font-mono text-[#333333] group-hover:text-[#ff3c00] text-xs transition-colors duration-100 flex-shrink-0 mt-0.5">→</span>
               </Link>
             ))}
           </div>
@@ -366,17 +374,25 @@ function RegularTopicPage({ topic }: { topic: NonNullable<ReturnType<typeof getT
       {relatedTopics.length > 0 && (
         <section className="border-t border-[#1a1a1a] px-6 py-8">
           <div className="max-w-2xl mx-auto">
-            <p className="font-mono text-[#888888] text-xs tracking-widest uppercase mb-4">
+            <p className="font-mono text-[#888888] text-xs tracking-widest uppercase mb-6">
               // related voids
             </p>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-col divide-y divide-[#111111]">
               {relatedTopics.map((related) => (
                 <Link
                   key={related.slug}
                   href={`/anonymous-thoughts/${related.slug}`}
-                  className="font-mono text-xs tracking-widest uppercase px-4 py-2 border border-[#1a1a1a] text-[#888888] hover:text-[#f0f0f0] hover:border-[#333333] transition-colors duration-100"
+                  className="group py-4 flex items-start justify-between gap-4 hover:bg-[#0d0d0d] -mx-2 px-2 transition-colors duration-100"
                 >
-                  {related.title}
+                  <div className="min-w-0">
+                    <p className="font-mono font-bold text-xs tracking-widest uppercase text-[#888888] group-hover:text-[#f0f0f0] transition-colors duration-100 mb-1">
+                      {related.title}
+                    </p>
+                    <p className="font-mono text-[10px] text-[#444444] group-hover:text-[#555555] transition-colors duration-100">
+                      {related.description}
+                    </p>
+                  </div>
+                  <span className="font-mono text-[#333333] group-hover:text-[#ff3c00] text-xs transition-colors duration-100 flex-shrink-0 mt-0.5">→</span>
                 </Link>
               ))}
             </div>

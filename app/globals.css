@@ -33,12 +33,21 @@ html, body {
 
 ::-webkit-scrollbar {
   width: 2px;
+  height: 2px;
 }
 ::-webkit-scrollbar-track {
   background: var(--background);
 }
 ::-webkit-scrollbar-thumb {
   background: var(--muted);
+}
+
+.scrollbar-none {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
 }
 
 textarea:focus {

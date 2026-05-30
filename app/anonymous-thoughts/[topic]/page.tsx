@@ -12,10 +12,20 @@ interface Props {
 // ── Super topic metadata ───────────────────────────────────────────────────
 
 const SUPER_DESCRIPTIONS: Record<SuperTopicSlug, string> = {
-  LOVE: "what love actually does to people",
-  MIND: "what happens inside when no one is watching",
-  SELF: "who you are when the performance stops",
-  EXISTENCE: "the questions nobody wants to sit with",
+  LOVE:        "what love actually does to people",
+  MIND:        "what happens inside when no one is watching",
+  SELF:        "who you are when the performance stops",
+  EXISTENCE:   "the questions nobody wants to sit with",
+  WOUND:       "the damage that came from people who were supposed to be safe",
+  FAMILY:      "the system you were born into and everything it installed",
+  PATTERN:     "the loops the mind runs to protect itself",
+  PERFORMANCE: "the version of yourself performed for every room",
+  FAITH:       "what you believed and what happened when you stopped",
+  DIGITAL:     "what the connected world actually does to you",
+  BODY:        "the skin you live in and the relationship you have with it",
+  TIME:        "what memory keeps, what the past costs, what impermanence means",
+  AMBITION:    "what you want, what it costs, and what happens when you arrive",
+  TRUTH:       "the things that aren't said and the weight of not saying them",
 };
 
 const SUPER_SHORT: Record<SuperTopicSlug, string[]> = {
@@ -38,6 +48,56 @@ const SUPER_SHORT: Record<SuperTopicSlug, string[]> = {
     "The questions underneath everything.",
     "Deferred by routine, by work, by the next plan.",
     "What surfaces when there's nothing left to defer them with.",
+  ],
+  WOUND: [
+    "The damage that came from people who were supposed to be safe.",
+    "The relational injuries that don't show from the outside.",
+    "What it costs to have loved people who hurt you.",
+  ],
+  FAMILY: [
+    "The system you were born into and everything it installed.",
+    "The roles assigned before you could speak and the patterns they became.",
+    "The people you didn't choose and the self they shaped.",
+  ],
+  PATTERN: [
+    "The loops the mind runs to protect itself.",
+    "The defenses that made sense once and outlasted their purpose.",
+    "What it costs to be someone whose nervous system never got the all-clear.",
+  ],
+  PERFORMANCE: [
+    "Saying yes, shrinking, accommodating — until it becomes who you are.",
+    "The version of yourself performed for every room.",
+    "The self that exists underneath the performance.",
+  ],
+  FAITH: [
+    "What you believed and what happened when you stopped.",
+    "The framework that held everything and what came after it collapsed.",
+    "The specific grief of losing something that was supposed to be certain.",
+  ],
+  DIGITAL: [
+    "What the connected world actually does to you.",
+    "The scroll, the feed, the parasocial intimacy, the ghost.",
+    "The interior life shaped by systems designed to capture it.",
+  ],
+  BODY: [
+    "The skin you live in and the relationship you have with it.",
+    "The chronic, the invisible, the distorted, the performed.",
+    "What it costs to exist inside something that doesn't always cooperate.",
+  ],
+  TIME: [
+    "What memory keeps and what it gets wrong.",
+    "The before and after, the parallel life, the unlived version.",
+    "The specific weight of knowing that nothing is permanent.",
+  ],
+  AMBITION: [
+    "What you want and what you're supposed to want.",
+    "The drive, the block, the almost, the hollow arrival.",
+    "What remains when you get there and it doesn't fix anything.",
+  ],
+  TRUTH: [
+    "The things that aren't said and the weight of not saying them.",
+    "The unspoken, the unwitnessed, the unfinished conversation.",
+    "What it costs to be honest — and what it costs not to be.",
   ],
 };
 

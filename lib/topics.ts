@@ -8,7 +8,10 @@ export interface Topic {
   related: string[];
 }
 
-export type SuperTopicSlug = "LOVE" | "MIND" | "SELF" | "EXISTENCE";
+export type SuperTopicSlug =
+  | "LOVE" | "MIND" | "SELF" | "EXISTENCE"
+  | "WOUND" | "FAMILY" | "PATTERN" | "PERFORMANCE"
+  | "FAITH" | "DIGITAL" | "BODY" | "TIME" | "AMBITION" | "TRUTH";
 
 export interface SuperTopic {
   slug: SuperTopicSlug;
@@ -16,10 +19,20 @@ export interface SuperTopic {
 }
 
 export const SUPER_TOPICS: SuperTopic[] = [
-  { slug: "LOVE", topics: ["love", "heartbreak", "longing", "marriage", "divorce", "cheating"] },
-  { slug: "MIND", topics: ["anxiety", "overthinking", "depression", "burnout", "trauma"] },
-  { slug: "SELF", topics: ["identity", "purpose", "meaning", "self-worth", "confidence"] },
-  { slug: "EXISTENCE", topics: ["death", "mortality", "freedom", "aging", "the-past"] },
+  { slug: "LOVE",        topics: ["love", "heartbreak", "longing", "marriage", "divorce", "cheating"] },
+  { slug: "MIND",        topics: ["anxiety", "overthinking", "depression", "burnout", "trauma"] },
+  { slug: "SELF",        topics: ["identity", "purpose", "meaning", "self-worth", "confidence"] },
+  { slug: "EXISTENCE",   topics: ["death", "mortality", "freedom", "aging", "the-past"] },
+  { slug: "WOUND",       topics: ["emotional-abuse", "narcissistic-relationship", "emotional-withholding", "conditional-love", "toxic-loyalty", "the-apology-that-never-came", "attachment-wound", "emotional-dependence", "codependency", "imposter-love"] },
+  { slug: "FAMILY",      topics: ["estrangement", "living-grief", "absent-father", "unchosen-role", "the-good-child", "enmeshment", "inherited-trauma", "caregiver-exhaustion"] },
+  { slug: "PATTERN",     topics: ["dissociation", "hypervigilance", "fawning", "emotional-repression", "avoidance", "intrusive-thoughts", "rumination", "catastrophizing", "learned-helplessness", "emotional-flooding", "chosen-numbness", "the-returning", "emotional-exile", "magical-thinking", "obsession"] },
+  { slug: "PERFORMANCE", topics: ["people-pleasing", "validation-hunger", "approval-addiction", "shrinking", "chronic-apologizing", "overcaring", "emotional-labor", "social-exhaustion", "small-talk", "the-performing-body", "overachievement"] },
+  { slug: "FAITH",       topics: ["religious-trauma", "faith-loss", "spiritual-bypassing", "deconstruction", "nihilism", "existential-dread", "free-will", "cultural-displacement", "class-shame"] },
+  { slug: "DIGITAL",     topics: ["doomscrolling", "parasocial-love", "ghosting", "situationship", "breadcrumbing", "digital-withdrawal", "second-hand-life", "hustle-culture", "productivity-shame", "rest-anxiety", "sunday-dread", "chronic-boredom"] },
+  { slug: "BODY",        topics: ["body-dysmorphia", "chronic-illness", "invisible-illness", "disordered-eating", "late-diagnosis", "masculinity", "femininity"] },
+  { slug: "TIME",        topics: ["false-memory", "before-after", "parallel-lives", "homecoming", "the-prodigal", "the-unlived-life", "impermanence", "anticipatory-grief", "survivors-guilt"] },
+  { slug: "AMBITION",    topics: ["fear-of-success", "fear-of-happiness", "chronic-underachievement", "ambition", "procrastination", "creative-block", "the-dream-you-gave-up", "hollow-victory", "the-almost", "invisible-achievement", "overqualification"] },
+  { slug: "TRUTH",       topics: ["the-unspoken-thing", "the-unfinished-conversation", "the-unwitnessed", "compulsive-honesty", "being-misunderstood", "oversharing", "after-survival", "intellectual-loneliness"] },
 ];
 
 export const TOPICS: Topic[] = [

@@ -1,12 +1,8 @@
-export const dynamic = "force-dynamic";
-
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { createPocketBase, type Post } from "@/lib/pocketbase";
 import { TOPICS, SUPER_TOPICS, getTopic, getSuperTopicForTopic, type SuperTopicSlug } from "@/lib/topics";
 import SiteHeader from "@/components/SiteHeader";
-import LandingPostsList from "@/components/LandingPostsList";
 import SiteFooter from "@/components/SiteFooter";
 
 interface Props {
@@ -98,18 +94,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: { title, description, url: `https://unmaskedwords.com/anonymous-thoughts/${slug}`, siteName: "UnmaskedWords", type: "website", locale: "en_US", images: [{ url: "/og-image.png", width: 1200, height: 630, alt: `Anonymous thoughts about ${topic.title}` }] },
     twitter: { card: "summary_large_image", title, description, images: ["/og-image.png"] },
   };
-}
-
-// ── Data fetching ──────────────────────────────────────────────────────────
-
-async function getPosts(): Promise<Post[]> {
-  try {
-    const pb = createPocketBase();
-    const result = await pb.collection("posts_en").getList<Post>(1, 50, { sort: "-created" });
-    return result.items;
-  } catch {
-    return [];
-  }
 }
 
 // ── Super topic page ───────────────────────────────────────────────────────
@@ -236,9 +220,7 @@ function SuperTopicPage({ slug, superSlug }: { slug: string; superSlug: SuperTop
 
 // ── Regular topic page ─────────────────────────────────────────────────────
 
-async function RegularTopicPage({ topic }: { topic: NonNullable<ReturnType<typeof getTopic>> }) {
-  const posts = await getPosts();
-
+function RegularTopicPage({ topic }: { topic: NonNullable<ReturnType<typeof getTopic>> }) {
   const relatedTopics = topic.related
     .map((r) => TOPICS.find((t) => t.slug === r))
     .filter(Boolean) as typeof TOPICS;
@@ -302,16 +284,6 @@ async function RegularTopicPage({ topic }: { topic: NonNullable<ReturnType<typeo
         </div>
       </section>
 
-      {/* Live posts */}
-      <section className="flex-1 px-6 py-10">
-        <div className="max-w-2xl mx-auto">
-          <p className="font-mono text-[#888888] text-xs tracking-widest uppercase mb-6">
-            // live anonymous thoughts
-          </p>
-          <LandingPostsList posts={posts} />
-        </div>
-      </section>
-
       {/* Related voids */}
       {relatedTopics.length > 0 && (
         <section className="border-t border-[#1a1a1a] px-6 py-8">
@@ -353,13 +325,11 @@ async function RegularTopicPage({ topic }: { topic: NonNullable<ReturnType<typeo
 export default async function TopicOrSuperTopicPage({ params }: Props) {
   const { topic: slug } = await params;
 
-  // Super topic takes priority
   const superTopic = getSuperTopic(slug);
   if (superTopic) {
     return <SuperTopicPage slug={slug} superSlug={superTopic.slug as SuperTopicSlug} />;
   }
 
-  // Regular topic
   const topic = getTopic(slug);
   if (!topic) notFound();
 

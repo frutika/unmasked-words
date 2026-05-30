@@ -40,7 +40,11 @@ function newMath() {
   };
 }
 
-export default function PostInput() {
+interface PostInputProps {
+  topic?: string;
+}
+
+export default function PostInput({ topic }: PostInputProps) {
   const [content, setContent] = useState("");
   const [alias, setAlias] = useState("");
   const [honeypot, setHoneypot] = useState("");
@@ -79,7 +83,7 @@ export default function PostInput() {
     setError(null);
     startTransition(async () => {
       try {
-        await submitPost(content, alias, honeypot, math.a, math.b, mathAnswer);
+        await submitPost(content, alias, honeypot, math.a, math.b, mathAnswer, topic);
         setContent("");
         setAlias("");
         setMathAnswer("");

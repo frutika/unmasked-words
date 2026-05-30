@@ -15,6 +15,7 @@ export interface Post {
   created: string;
   plus: number;
   bang: number;
+  topic?: string;
 }
 
 export interface Duel {

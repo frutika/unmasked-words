@@ -50,7 +50,12 @@ async function getPosts(): Promise<{ posts: Post[]; totalPages: number; totalIte
   }
 }
 
-export default async function HomePage() {
+export default async function HomePage({
+  searchParams,
+}: {
+  searchParams: Promise<{ topic?: string }>;
+}) {
+  const { topic } = await searchParams;
   const { posts, totalPages, totalItems } = await getPosts();
 
   return (
@@ -74,10 +79,25 @@ export default async function HomePage() {
 
       <section className="border-b border-[#1a1a1a] px-6 py-8">
         <div className="max-w-2xl mx-auto">
-          <p className="font-mono text-[#888888] text-xs tracking-widest uppercase mb-4">
-            // your thought
-          </p>
-          <PostInput />
+          {topic ? (
+            <div className="flex items-center justify-between mb-4">
+              <p className="font-mono text-[#888888] text-xs tracking-widest uppercase">
+                // posting about{" "}
+                <span className="text-[#ff3c00]">{topic.replace(/-/g, " ")}</span>
+              </p>
+              <a
+                href="/"
+                className="font-mono text-[#555555] text-[10px] tracking-widest uppercase hover:text-[#888888] transition-colors"
+              >
+                clear ×
+              </a>
+            </div>
+          ) : (
+            <p className="font-mono text-[#888888] text-xs tracking-widest uppercase mb-4">
+              // your thought
+            </p>
+          )}
+          <PostInput topic={topic} />
         </div>
       </section>
 

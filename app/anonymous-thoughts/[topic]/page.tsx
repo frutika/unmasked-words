@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { TOPICS, SUPER_TOPICS, getTopic, getSuperTopicForTopic, type SuperTopicSlug } from "@/lib/topics";
 import SiteHeader from "@/components/SiteHeader";
+import TopicFeed from "@/components/TopicFeed";
 import SiteFooter from "@/components/SiteFooter";
 
 interface Props {
@@ -214,7 +215,10 @@ function SuperTopicPage({ slug, superSlug }: { slug: string; superSlug: SuperTop
               <p key={i} className="font-mono text-[#888888] text-sm leading-relaxed">{line}</p>
             ))}
           </div>
-          <Link href="/" className="font-mono font-bold text-xs tracking-widest uppercase px-6 py-3 bg-[#ff3c00] text-black hover:bg-[#f0f0f0] transition-colors duration-150">
+          <Link
+            href={`/?topic=${slug}`}
+            className="font-mono font-bold text-xs tracking-widest uppercase px-6 py-3 bg-[#ff3c00] text-black hover:bg-[#f0f0f0] transition-colors duration-150"
+          >
             POST ANONYMOUSLY →
           </Link>
         </div>
@@ -338,9 +342,22 @@ function RegularTopicPage({ topic }: { topic: NonNullable<ReturnType<typeof getT
               <p key={i} className="font-mono text-[#888888] text-sm leading-relaxed">{line}</p>
             ))}
           </div>
-          <Link href="/" className="font-mono font-bold text-xs tracking-widest uppercase px-6 py-3 bg-[#ff3c00] text-black hover:bg-[#f0f0f0] transition-colors duration-150">
+          <Link
+            href={`/?topic=${topic.slug}`}
+            className="font-mono font-bold text-xs tracking-widest uppercase px-6 py-3 bg-[#ff3c00] text-black hover:bg-[#f0f0f0] transition-colors duration-150"
+          >
             POST ANONYMOUSLY →
           </Link>
+        </div>
+      </section>
+
+      {/* Topic feed */}
+      <section className="flex-1 px-6 py-10">
+        <div className="max-w-2xl mx-auto">
+          <p className="font-mono text-[#888888] text-xs tracking-widest uppercase mb-6">
+            // anonymous thoughts about {topic.title.toLowerCase()}
+          </p>
+          <TopicFeed topic={topic.slug} />
         </div>
       </section>
 

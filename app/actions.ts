@@ -29,14 +29,13 @@ export async function submitPost(
   honeypot: string,
   mathA: number,
   mathB: number,
-  mathAnswer: string
+  mathAnswer: string,
+  topic?: string
 ) {
   if (!content.trim()) throw new Error("Content cannot be empty.");
 
-  // bot filled the hidden field
   if (honeypot) return;
 
-  // wrong math answer
   if (parseInt(mathAnswer, 10) !== mathA + mathB) {
     throw new Error("Verification failed.");
   }
@@ -46,9 +45,11 @@ export async function submitPost(
     content: content.trim(),
     alias: alias.trim() || "Anonymous",
     created: new Date().toISOString().replace("T", " "),
+    topic: topic?.trim() || "",
   });
 
   revalidatePath("/");
+  if (topic) revalidatePath(`/anonymous-thoughts/${topic}`);
 }
 
 export async function submitThreadPost(

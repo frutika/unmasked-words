@@ -100,6 +100,7 @@ export default function ThreadPostInput({ slug, prompt }: ThreadPostInputProps) 
             placeholder=""
             rows={5}
             disabled={isPending}
+            aria-label="Write your anonymous thought"
             className="w-full bg-transparent p-5 text-[#f0f0f0] font-mono leading-relaxed resize-none focus:outline-none disabled:opacity-50"
             style={{ fontSize: "clamp(0.875rem, 2vw, 1rem)", letterSpacing: "0.02em" }}
           />
@@ -123,6 +124,7 @@ export default function ThreadPostInput({ slug, prompt }: ThreadPostInputProps) 
               onChange={(e) => setAlias(e.target.value.slice(0, 40))}
               placeholder="Anonymous"
               disabled={isPending}
+              aria-label="Your alias (optional)"
               className="bg-transparent text-[#888888] placeholder-[#888888] font-mono text-xs focus:outline-none focus:text-[#f0f0f0] transition-colors w-32 disabled:opacity-50"
             />
             <button
@@ -130,7 +132,8 @@ export default function ThreadPostInput({ slug, prompt }: ThreadPostInputProps) 
               onClick={() => setAlias(getRandomAlias())}
               disabled={isPending}
               title="Random alias"
-              className="font-mono text-xs text-[#888888] hover:text-[#ff3c00] transition-colors disabled:opacity-30"
+              aria-label="Generate random alias"
+              className="font-mono text-xs text-[#888888] hover:text-[#ff3c00] transition-colors disabled:opacity-30 min-w-[44px] min-h-[44px] flex items-center justify-center"
             >
               ↺
             </button>
@@ -149,6 +152,7 @@ export default function ThreadPostInput({ slug, prompt }: ThreadPostInputProps) 
                   onChange={(e) => setMathAnswer(e.target.value.replace(/\D/g, "").slice(0, 3))}
                   disabled={isPending}
                   placeholder="?"
+                  aria-label="Math answer"
                   className="w-10 bg-transparent border-b border-[#444444] focus:border-[#f0f0f0] text-[#f0f0f0] placeholder-[#888888] font-mono text-xs text-center focus:outline-none transition-colors disabled:opacity-50"
                 />
               </div>

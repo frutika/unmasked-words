@@ -75,8 +75,9 @@ export default function ShareMenu({ postId, content }: ShareMenuProps) {
       <div className="relative">
         <button
           onClick={() => setOpen((v) => !v)}
-          className="flex items-center gap-1 font-mono text-[10px] text-[#888888] hover:text-[#aaaaaa] transition-colors"
+          className="flex items-center gap-1 font-mono text-[10px] text-[#888888] hover:text-[#aaaaaa] transition-colors min-h-[44px] px-1"
           title="Share"
+          aria-label="Share this post"
         >
           <Share2 size={11} />
           <span className="tracking-widest uppercase">share</span>

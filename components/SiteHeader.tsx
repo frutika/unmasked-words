@@ -85,7 +85,7 @@ export default function SiteHeader({ subtitle, right }: SiteHeaderProps) {
 
       {/* Super topics nav strip */}
       <div className="border-t border-[#111111] overflow-x-auto scrollbar-none">
-        <div className="flex items-center gap-0 px-6 w-max min-w-full">
+        <div className="flex items-center gap-0 w-max mx-auto">
           {SUPER_TOPICS.map((st, i) => {
             const slug = st.slug.toLowerCase();
             const href = `/anonymous-thoughts/${slug}`;

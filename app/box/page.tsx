@@ -15,6 +15,7 @@ export const metadata: Metadata = {
     "Anonymous thoughts that auto-delete after 24 hours. Before they vanish, one sentence is extracted and survives forever in the Voices from the Box.",
   keywords: ["black box", "ephemeral thoughts", "auto-delete", "anonymous writing", "disappearing messages", "confessions"],
   alternates: { canonical: "https://unmaskedwords.com/box" },
+  robots: { index: false, follow: true },
   openGraph: {
     title: "The Black Box — Write It, Watch It Vanish | UnmaskedWords",
     description: "Your thought disappears in 24 hours. Before it vanishes, the void pulls one sentence that survives forever in the Voices from the Box.",

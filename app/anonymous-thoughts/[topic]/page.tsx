@@ -135,6 +135,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return {
       title,
       description,
+      keywords: [`anonymous thoughts about ${superTopic.slug.toLowerCase()}`, `${superTopic.slug.toLowerCase()} confessions`, `${superTopic.slug.toLowerCase()} anonymous`, ...SUPER_TOPICS.find((st) => st.slug === superTopic.slug)!.topics.slice(0, 6).map((s) => `${s} anonymous`)],
       alternates: { canonical: `https://unmaskedwords.com/anonymous-thoughts/${slug.toLowerCase()}` },
       openGraph: { title, description, url: `https://unmaskedwords.com/anonymous-thoughts/${slug.toLowerCase()}`, siteName: "UnmaskedWords", type: "website", locale: "en_US", images: [{ url: "/og-image.png", width: 1200, height: 630, alt: `UnmaskedWords — ${superTopic.slug}` }] },
       twitter: { card: "summary_large_image", title, description, images: ["/og-image.png"] },
@@ -246,7 +247,7 @@ function SuperTopicPage({ slug, superSlug }: { slug: string; superSlug: SuperTop
                   </p>
                   <div className="flex flex-col gap-0.5">
                     {topic.shortIntro.split("\n").map((line, i) => (
-                      <p key={i} className="font-mono text-[#444444] text-[11px] leading-relaxed">{line}</p>
+                      <p key={i} className="font-mono text-[#666666] text-[11px] leading-relaxed">{line}</p>
                     ))}
                   </div>
                 </div>

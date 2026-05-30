@@ -219,7 +219,7 @@ function SuperTopicPage({ slug, superSlug }: { slug: string; superSlug: SuperTop
             href={`/?topic=${slug}`}
             className="font-mono font-bold text-xs tracking-widest uppercase px-6 py-3 bg-[#ff3c00] text-black hover:bg-[#f0f0f0] transition-colors duration-150"
           >
-            POST ANONYMOUSLY →
+            ENTER THE VOID →
           </Link>
         </div>
       </section>
@@ -346,7 +346,7 @@ function RegularTopicPage({ topic }: { topic: NonNullable<ReturnType<typeof getT
             href={`/?topic=${topic.slug}`}
             className="font-mono font-bold text-xs tracking-widest uppercase px-6 py-3 bg-[#ff3c00] text-black hover:bg-[#f0f0f0] transition-colors duration-150"
           >
-            POST ANONYMOUSLY →
+            ENTER THE VOID →
           </Link>
         </div>
       </section>

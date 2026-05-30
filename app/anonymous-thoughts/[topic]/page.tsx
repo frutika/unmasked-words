@@ -395,7 +395,7 @@ function RegularTopicPage({ topic }: { topic: NonNullable<ReturnType<typeof getT
       <section className="border-t border-[#1a1a1a] px-6 py-10">
         <div className="max-w-2xl mx-auto space-y-4">
           {topic.intro.split("\n\n").map((paragraph, i) => (
-            <p key={i} className="font-mono text-[#444444] text-xs leading-relaxed">{paragraph}</p>
+            <p key={i} className="font-mono text-[#666666] text-xs leading-relaxed">{paragraph}</p>
           ))}
         </div>
       </section>

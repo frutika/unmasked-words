@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { createPocketBase, type Post } from "@/lib/pocketbase";
 import Link from "next/link";
+import ShareMenu from "@/components/ShareMenu";
 
 function timeAgo(dateStr: string): string {
   const diff = Date.now() - new Date(dateStr).getTime();
@@ -61,14 +62,20 @@ export default function TopicFeed({ topic }: { topic: string }) {
           <p className="font-mono text-[#f0f0f0] text-sm leading-relaxed mb-3">
             {post.content}
           </p>
-          <div className="flex items-center gap-3">
-            <span className="font-mono text-[#555555] text-[10px] tracking-widest">
-              {post.alias || "Anonymous"}
-            </span>
-            <span className="font-mono text-[#333333] text-[10px]">·</span>
-            <span className="font-mono text-[#333333] text-[10px] tabular-nums">
-              {timeAgo(post.created)}
-            </span>
+          <div className="flex items-center justify-between gap-3">
+            <div className="flex items-center gap-3">
+              <span className="font-mono text-[#555555] text-[10px] tracking-widest">
+                {post.alias || "Anonymous"}
+              </span>
+              <span className="font-mono text-[#333333] text-[10px]">·</span>
+              <Link
+                href={`/post/${post.id}`}
+                className="font-mono text-[#333333] text-[10px] tabular-nums hover:text-[#555555] transition-colors"
+              >
+                {timeAgo(post.created)}
+              </Link>
+            </div>
+            <ShareMenu postId={post.id} content={post.content} />
           </div>
         </article>
       ))}

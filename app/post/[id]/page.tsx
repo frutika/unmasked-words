@@ -60,26 +60,31 @@ export default async function PostPage({ params }: Props) {
 
   if (!post) notFound();
 
+  const postUrl = `https://unmaskedwords.com/post/${id}`;
+  const topicUrl = post.topic ? `https://unmaskedwords.com/anonymous-thoughts/${post.topic}` : null;
+  const breadcrumbItems = [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://unmaskedwords.com" },
+    ...(topicUrl && post.topic ? [{ "@type": "ListItem", position: 2, name: post.topic, item: topicUrl }] : []),
+    { "@type": "ListItem", position: topicUrl ? 3 : 2, name: post.content.slice(0, 50), item: postUrl },
+  ];
   const jsonLd = [
     {
       "@context": "https://schema.org",
-      "@type": "Article",
+      "@type": "DiscussionForumPosting",
       headline: post.content.slice(0, 110),
-      description: post.content.slice(0, 155),
-      url: `https://unmaskedwords.com/post/${id}`,
+      text: post.content,
+      url: postUrl,
       datePublished: post.created ? new Date(post.created).toISOString() : undefined,
       author: { "@type": "Person", name: post.alias || "Anonymous" },
       publisher: { "@type": "Organization", name: "UnmaskedWords", url: "https://unmaskedwords.com" },
       inLanguage: "en-US",
       isPartOf: { "@type": "WebSite", name: "UnmaskedWords", url: "https://unmaskedwords.com" },
+      ...(post.topic ? { about: { "@type": "Thing", name: post.topic, url: topicUrl } } : {}),
     },
     {
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
-      itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Home", item: "https://unmaskedwords.com" },
-        { "@type": "ListItem", position: 2, name: "Post", item: `https://unmaskedwords.com/post/${id}` },
-      ],
+      itemListElement: breadcrumbItems,
     },
   ];
 

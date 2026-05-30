@@ -170,23 +170,40 @@ function SuperTopicPage({ slug, superSlug }: { slug: string; superSlug: SuperTop
     .filter(Boolean)
     .filter((t) => t!.slug !== slug) as typeof TOPICS;
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    name: `Anonymous Thoughts — ${superSlug}`,
-    description: SUPER_DESCRIPTIONS[superSlug],
-    url: `https://unmaskedwords.com/anonymous-thoughts/${slug}`,
-    isPartOf: { "@type": "WebSite", name: "UnmaskedWords", url: "https://unmaskedwords.com" },
-    inLanguage: "en-US",
-    breadcrumb: {
+  const pageUrl = `https://unmaskedwords.com/anonymous-thoughts/${slug}`;
+  const jsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      name: `Anonymous Thoughts — ${superSlug}`,
+      description: SUPER_DESCRIPTIONS[superSlug],
+      url: pageUrl,
+      isPartOf: { "@type": "WebSite", name: "UnmaskedWords", url: "https://unmaskedwords.com" },
+      inLanguage: "en-US",
+    },
+    {
+      "@context": "https://schema.org",
       "@type": "BreadcrumbList",
       itemListElement: [
         { "@type": "ListItem", position: 1, name: "Home", item: "https://unmaskedwords.com" },
         { "@type": "ListItem", position: 2, name: "Anonymous Thoughts", item: "https://unmaskedwords.com/anonymous-thoughts" },
-        { "@type": "ListItem", position: 3, name: superSlug, item: `https://unmaskedwords.com/anonymous-thoughts/${slug}` },
+        { "@type": "ListItem", position: 3, name: superSlug, item: pageUrl },
       ],
     },
-  };
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      name: `${superSlug} — Anonymous Thought Voids`,
+      numberOfItems: topics.length,
+      itemListElement: topics.map((t, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        name: t.title,
+        url: `https://unmaskedwords.com/anonymous-thoughts/${t.slug}`,
+        description: t.description,
+      })),
+    },
+  ];
 
   return (
     <main className="min-h-screen bg-[#0a0a0a] flex flex-col">
@@ -300,23 +317,42 @@ function RegularTopicPage({ topic }: { topic: NonNullable<ReturnType<typeof getT
 
   const superTopicSlug = getSuperTopicForTopic(topic.slug);
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    name: `Anonymous Thoughts About ${topic.title}`,
-    description: topic.description,
-    url: `https://unmaskedwords.com/anonymous-thoughts/${topic.slug}`,
-    isPartOf: { "@type": "WebSite", name: "UnmaskedWords", url: "https://unmaskedwords.com" },
-    inLanguage: "en-US",
-    breadcrumb: {
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Home", item: "https://unmaskedwords.com" },
-        { "@type": "ListItem", position: 2, name: "Anonymous Thoughts", item: "https://unmaskedwords.com/anonymous-thoughts" },
-        { "@type": "ListItem", position: 3, name: topic.title, item: `https://unmaskedwords.com/anonymous-thoughts/${topic.slug}` },
-      ],
+  const pageUrl = `https://unmaskedwords.com/anonymous-thoughts/${topic.slug}`;
+  const breadcrumbItems = [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://unmaskedwords.com" },
+    { "@type": "ListItem", position: 2, name: "Anonymous Thoughts", item: "https://unmaskedwords.com/anonymous-thoughts" },
+    ...(superTopicSlug ? [{ "@type": "ListItem", position: 3, name: superTopicSlug, item: `https://unmaskedwords.com/anonymous-thoughts/${superTopicSlug.toLowerCase()}` }] : []),
+    { "@type": "ListItem", position: superTopicSlug ? 4 : 3, name: topic.title, item: pageUrl },
+  ];
+  const jsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      name: `Anonymous Thoughts About ${topic.title}`,
+      description: topic.description,
+      url: pageUrl,
+      isPartOf: { "@type": "WebSite", name: "UnmaskedWords", url: "https://unmaskedwords.com" },
+      inLanguage: "en-US",
     },
-  };
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: breadcrumbItems,
+    },
+    ...(relatedTopics.length > 0 ? [{
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      name: `Related Voids — ${topic.title}`,
+      numberOfItems: relatedTopics.length,
+      itemListElement: relatedTopics.map((r, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        name: r.title,
+        url: `https://unmaskedwords.com/anonymous-thoughts/${r.slug}`,
+        description: r.description,
+      })),
+    }] : []),
+  ];
 
   return (
     <main className="min-h-screen bg-[#0a0a0a] flex flex-col">

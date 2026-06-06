@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { TOPICS, SUPER_TOPICS, getTopic, getSuperTopicForTopic, type SuperTopicSlug } from "@/lib/topics";
 import SiteHeader from "@/components/SiteHeader";
 import TopicFeed from "@/components/TopicFeed";
+import PostInput from "@/components/PostInput";
 import SiteFooter from "@/components/SiteFooter";
 
 interface Props {
@@ -402,6 +403,9 @@ function RegularTopicPage({ topic }: { topic: NonNullable<ReturnType<typeof getT
           <p className="font-mono text-[#888888] text-xs tracking-widest uppercase mb-6">
             // {topic.title.toLowerCase()} signals
           </p>
+          <div className="mb-10">
+            <PostInput topic={topic.slug} />
+          </div>
           <TopicFeed topic={topic.slug} />
         </div>
       </section>

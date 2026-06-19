@@ -3,6 +3,7 @@ import { execSync } from "child_process";
 import { createPocketBase, type Post } from "@/lib/pocketbase";
 import { THREADS } from "@/lib/threads";
 import { TOPICS, SUPER_TOPICS } from "@/lib/topics";
+import { BLOG_POSTS } from "@/lib/blog-posts";
 
 export const dynamic = "force-dynamic";
 
@@ -36,6 +37,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticPages: MetadataRoute.Sitemap = [
     { url: BASE,                             lastModified: gitDate("app/page.tsx"),                   changeFrequency: "always",  priority: 1 },
     { url: `${BASE}/about`,                  lastModified: gitDate("app/about/page.tsx"),             changeFrequency: "monthly", priority: 0.7 },
+    { url: `${BASE}/blog`,                   lastModified: gitDate("app/blog/page.tsx"),               changeFrequency: "weekly",  priority: 0.8 },
+    ...BLOG_POSTS.map((p) => ({
+      url: `${BASE}/blog/${p.slug}`,
+      lastModified: new Date(p.publishedAt),
+      changeFrequency: "monthly" as const,
+      priority: 0.75,
+    })),
     { url: `${BASE}/how-it-works`,           lastModified: gitDate("app/how-it-works/page.tsx"),      changeFrequency: "monthly", priority: 0.75 },
     { url: `${BASE}/privacy`,                lastModified: gitDate("app/privacy/page.tsx"),           changeFrequency: "yearly",  priority: 0.5 },
     { url: `${BASE}/creed`,                  lastModified: gitDate("app/creed/page.tsx"),             changeFrequency: "monthly", priority: 0.85 },

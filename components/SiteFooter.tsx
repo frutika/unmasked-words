@@ -11,6 +11,7 @@ const LINKS = [
   { href: "/how-it-works",      label: "how it works" },
   { href: "/about",             label: "manifesto" },
   { href: "/privacy",           label: "privacy" },
+  { href: "/blog",              label: "blog" },
 ];
 
 export default function SiteFooter() {

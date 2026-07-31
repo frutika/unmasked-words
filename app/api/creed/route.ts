@@ -164,7 +164,7 @@ export async function POST(req: NextRequest) {
     });
 
     const raw = message.content[0].type === "text" ? message.content[0].text : "";
-    const jsonStr = raw.replace(/^```json?\s*/i, "").replace(/\s*```$/i, "").trim();
+    const jsonStr = raw.replace(/^```(?:json)?\s*/i, "").replace(/\s*```$/i, "").trim();
     const parsed = JSON.parse(jsonStr);
 
     if (!Array.isArray(parsed.lines) || parsed.lines.length === 0) {

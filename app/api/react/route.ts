@@ -17,7 +17,6 @@ export async function POST(req: NextRequest) {
   }
 
   const field = type === "+" ? "plus" : "bang";
-  const op = action === "add" ? `${field}+` : `${field}-`;
 
   try {
     const pb = createPocketBase();
@@ -25,7 +24,14 @@ export async function POST(req: NextRequest) {
       process.env.PB_ADMIN_EMAIL!,
       process.env.PB_ADMIN_PASSWORD!
     );
-    await pb.collection(collection).update(postId, { [op]: 1 });
+    if (action === "add") {
+      await pb.collection(collection).update(postId, { [`${field}+`]: 1 });
+    } else {
+      // Decrement, ali nikad ispod 0 (PocketBase `field-` nema donju granicu).
+      const rec = await pb.collection(collection).getOne(postId);
+      const current = Number((rec as Record<string, unknown>)[field]) || 0;
+      await pb.collection(collection).update(postId, { [field]: Math.max(0, current - 1) });
+    }
     return NextResponse.json({ ok: true });
   } catch {
     return NextResponse.json({ error: "failed" }, { status: 500 });

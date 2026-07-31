@@ -6,7 +6,7 @@ import Link from "next/link";
 import ShareMenu from "@/components/ShareMenu";
 
 function timeAgo(dateStr: string): string {
-  const diff = Date.now() - new Date(dateStr).getTime();
+  const diff = Date.now() - new Date(dateStr.replace(" ", "T")).getTime();
   const m = Math.floor(diff / 60000);
   if (m < 1) return "just now";
   if (m < 60) return `${m}m ago`;

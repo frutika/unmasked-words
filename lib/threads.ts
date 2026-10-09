@@ -26,7 +26,7 @@ export const THREADS: Thread[] = [
 The anonymous voices in this thread are saying the thing that shame told them never to say. No one here knows their name. The exposure is as low as it gets. For many of them, saying it here — even to a void — changed something about its weight.
 
 If you have something shame has been keeping from you, this is where it goes.`,
-    related: ["confession", "guilt", "secrets", "identity"],
+    related: ["confession", "secrets", "identity"],
   },
   {
     slug: "rage",
@@ -74,7 +74,7 @@ This thread is where they get named. The act of naming a fear — even anonymous
 The pressure to be "doing better" is one of the loneliest parts of grieving. The performance of recovery — for the people around you who need you to be okay — happens while the internal reality continues without announcement.
 
 This thread holds the private account. The grief that couldn't be shown without changing how people see you. The loss that doesn't have a name others would recognize. All of it — said here, to the void, without a timeline.`,
-    related: ["longing", "love", "loss", "solitude"],
+    related: ["longing", "love", "solitude"],
   },
   {
     slug: "confession",
@@ -90,7 +90,7 @@ This thread holds the private account. The grief that couldn't be shown without 
 This is a confessional without a priest. Without consequences. Without anyone who knows your name. The confession you write here will not change your relationships, your reputation, or your life. It will simply exist — named, said, released into a void that receives everything without modification.
 
 Everything posted in this thread was said by someone who needed to say the true thing, just once, to somewhere that wasn't their own skull.`,
-    related: ["shame", "secrets", "guilt", "rage"],
+    related: ["shame", "secrets", "rage"],
   },
   {
     slug: "longing",
@@ -106,7 +106,7 @@ Everything posted in this thread was said by someone who needed to say the true 
 Memory edits in favor of what was lost. The thing you're reaching for may not have been quite as it appears in the remembering — but the reaching itself is real, and the ache is exact.
 
 This thread holds the reach. The honest account of what you're still missing, without the part where you've made peace with it. No requirement to have moved on. Just the longing, said.`,
-    related: ["grief", "love", "solitude", "the-past"],
+    related: ["grief", "love", "solitude"],
   },
   {
     slug: "desire",
@@ -138,7 +138,7 @@ The void doesn't judge desire. It holds it the same way it holds everything — 
 The version of yourself that failed is not comfortable to look at directly. The honest account of what happened — the real reasons, the real cost, what it revealed about you that you hadn't wanted to know — is what most people avoid examining.
 
 This thread holds the examination. The honest version, before the narrative, without the part where it becomes useful.`,
-    related: ["shame", "doubt", "regret", "identity"],
+    related: ["shame", "doubt", "identity"],
   },
   {
     slug: "doubt",
@@ -186,7 +186,7 @@ This thread is for the interior version — the one that exists before the prese
 Love as it's usually discussed has been smoothed for public consumption. The version that fits into narratives, that concludes, that teaches a lesson you can summarize. The version here is different. The one that doesn't conclude. The one that's still ongoing even when it has no place to go.
 
 This is where that version gets to be said.`,
-    related: ["longing", "grief", "desire", "heartbreak"],
+    related: ["longing", "grief", "desire"],
   },
   {
     slug: "solitude",

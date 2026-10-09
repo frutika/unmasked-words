@@ -96,7 +96,7 @@ export async function POST(req: NextRequest) {
 
     const raw = message.content[0].type === "text" ? message.content[0].text : "";
     // Strip markdown fences if model wraps anyway
-    const jsonStr = raw.replace(/^```json?\s*/i, "").replace(/\s*```$/i, "").trim();
+    const jsonStr = raw.replace(/^```(?:json)?\s*/i, "").replace(/\s*```$/i, "").trim();
     const reflection: MirrorReflection = JSON.parse(jsonStr);
 
     if (!reflection.tone || !reflection.subtext || !reflection.reveals || !reflection.question) {

@@ -411,7 +411,7 @@ The thoughts that follow are rarely ones you can share. They're too raw, too exi
 
 This is where they go instead. Anonymous thoughts about mortality, posted without a face. The void doesn't flinch.`,
     keywords: ["mortality thoughts anonymous", "existential thoughts anonymous", "facing death thoughts"],
-    related: ["death", "meaning", "time", "fear", "aging"],
+    related: ["death", "meaning", "fear", "aging"],
   },
 
   // ── SHAME CLUSTER ─────────────────────────────────────────────────────────
@@ -452,7 +452,7 @@ This is a confessional without a priest. Without consequences. Without anyone wh
 
 The posts below are confessions. Real ones. Posted by people who needed to say the true thing, just once.`,
     keywords: ["anonymous confession", "confess something anonymous", "online confession no account"],
-    related: ["secrets", "guilt", "shame", "truth", "regret"],
+    related: ["secrets", "guilt", "shame", "regret"],
   },
 
   // ── IDENTITY CLUSTER ──────────────────────────────────────────────────────
@@ -595,7 +595,7 @@ Anonymous thoughts about friendship posted here are the things that couldn't be 
 
 Anonymous thoughts about betrayal posted here don't need to be fair to the person who betrayed you. They don't need to acknowledge complexity or nuance. This is the honest account of what it did to you.`,
     keywords: ["betrayal confessions anonymous", "being betrayed thoughts", "trust broken anonymous"],
-    related: ["trust", "friendship", "anger", "forgiveness", "shock"],
+    related: ["trust", "friendship", "anger", "forgiveness"],
   },
   {
     slug: "trust",
@@ -816,7 +816,7 @@ Anonymous thoughts about work posted here are the version that doesn't go anywhe
 
 Anonymous thoughts about money posted here are the things that couldn't be said where anyone knows your income, your rent, your debt. The honest account of what it actually feels like to live in a body that costs money to maintain.`,
     keywords: ["money thoughts anonymous", "financial stress anonymous", "money anxiety confessions"],
-    related: ["work", "stress", "failure", "security", "shame"],
+    related: ["work", "failure", "shame"],
   },
   {
     slug: "change",
@@ -855,7 +855,7 @@ The feelings about aging — grief for the body you had, for the possibilities t
 
 Anonymous thoughts about aging posted here are from before the acceptance. The honest account of what it's actually like to watch time move.`,
     keywords: ["aging thoughts anonymous", "getting older feelings", "time passing confessions"],
-    related: ["mortality", "time", "the-past", "identity", "body"],
+    related: ["mortality", "the-past", "identity", "body"],
   },
   {
     slug: "the-past",
@@ -868,7 +868,7 @@ What you keep going back to — what's worth examining — is usually informatio
 
 Anonymous thoughts about the past posted here are from people who went back. The honest account of what they found.`,
     keywords: ["past thoughts anonymous", "living in the past anonymous", "can't let go of the past"],
-    related: ["nostalgia", "regret", "memory", "loss", "longing"],
+    related: ["nostalgia", "regret", "loss", "longing"],
   },
   {
     slug: "nostalgia",
@@ -881,7 +881,7 @@ The past that nostalgia returns to is usually partly constructed. Memory is not 
 
 Anonymous thoughts about nostalgia posted here are the honest account of the ache — without the reassurance that the present is just as good. This is where the grief for the past gets to be exactly that.`,
     keywords: ["nostalgia confessions anonymous", "missing the past anonymous", "nostalgic thoughts"],
-    related: ["the-past", "memory", "longing", "childhood", "loss"],
+    related: ["the-past", "longing", "childhood", "loss"],
   },
   {
     slug: "hope",
@@ -907,7 +907,7 @@ The things people carry from childhood are often the hardest to see clearly beca
 
 Anonymous thoughts about childhood posted here are the honest account of what it actually was and what it left behind.`,
     keywords: ["childhood thoughts anonymous", "childhood trauma anonymous", "things I carry from childhood"],
-    related: ["parents", "family", "memory", "trauma", "identity"],
+    related: ["parents", "family", "trauma", "identity"],
   },
   {
     slug: "addiction",
@@ -959,7 +959,7 @@ The honest account of exhaustion includes not just what you're tired from, but w
 
 Anonymous thoughts about exhaustion posted here are from people who are done pretending they have more left than they do. The honest account, without the performance of being okay.`,
     keywords: ["exhaustion thoughts anonymous", "tired of everything anonymous", "emotionally exhausted confessions"],
-    related: ["burnout", "depression", "meaning", "change", "care"],
+    related: ["burnout", "depression", "meaning", "change"],
   },
   {
     slug: "freedom",
@@ -983,7 +983,7 @@ It happens because the harm is familiar. Familiarity has a pull that new and bet
 
 Anonymous thoughts about self-destruction posted here are honest about the pattern without needing to have exited it. The observation that you're doing the thing, again, and what that feels like from the inside.`,
     keywords: ["self-destructive thoughts anonymous", "self-sabotage confessions", "hurting myself anonymous"],
-    related: ["addiction", "shame", "anger", "healing", "patterns"],
+    related: ["addiction", "shame", "anger", "healing"],
   },
   {
     slug: "control",
@@ -1009,7 +1009,7 @@ The honest account of what social media does to your sense of self, your sense o
 
 Anonymous thoughts about social media posted here are from people who named what it's actually doing. Without having to manage the irony of posting it somewhere that makes the problem worse.`,
     keywords: ["social media thoughts anonymous", "social media making me feel bad", "comparison on social media"],
-    related: ["comparison", "jealousy", "identity", "self-worth", "performance"],
+    related: ["comparison", "jealousy", "identity", "self-worth"],
   },
   {
     slug: "loneliness-in-a-crowd",
@@ -1350,7 +1350,7 @@ Anonymous thoughts about invisibility posted here are from people who know exact
     shortIntro: "The early pattern that became your blueprint.\nFormed before language, enacted in every relationship since.\nThe version of love you keep rebuilding from the first template.",
     intro: `Attachment wounds develop early, in the first relationships where you learned what love looked and felt like. Anxious attachment, avoidant, disorganized — the names matter less than the experience: the pattern of connecting that was formed before you had language for it, that you've been enacting in every relationship since.\n\nAnonymous thoughts about attachment wounds posted here are from people recognizing the pattern in real time — what the wound is, where it came from, and the very specific difficulty of wanting to connect differently than you were taught.`,
     keywords: ["attachment wound confessions", "attachment style anonymous", "why I love like this"],
-    related: ["codependency", "emotional-dependence", "parents", "childhood", "relationships"],
+    related: ["codependency", "emotional-dependence", "parents", "childhood"],
   },
   {
     slug: "caregiver-exhaustion",
@@ -1667,7 +1667,7 @@ Anonymous thoughts about invisibility posted here are from people who know exact
     shortIntro: "The diagnosis that arrives decades after you needed it.\nRelief because finally there is a framework.\nGrief because the years spent without it are not reclaimable.",
     intro: `Late diagnosis — of autism, ADHD, bipolar disorder, OCD, or any condition that shaped the entire arc of a life without being named — arrives with a particular combination of grief and relief. Relief because finally there is a framework. Grief because the years spent without it are not reclaimable. The diagnosis doesn't undo the history. It just makes it legible.\n\nAnonymous thoughts about late diagnosis posted here are from people processing the retroactive map — the honest account of what it means to finally have a name for the thing that was always there.`,
     keywords: ["late diagnosis thoughts anonymous", "autism diagnosis adult confessions", "ADHD diagnosis adult anonymous"],
-    related: ["identity", "being-misunderstood", "shame", "grief", "self-understanding"],
+    related: ["identity", "being-misunderstood", "shame", "grief"],
   },
   {
     slug: "impermanence",

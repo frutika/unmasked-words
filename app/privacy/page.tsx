@@ -29,6 +29,13 @@ const sections = [
 What follows is the complete technical account of what data is processed and why.`,
   },
   {
+    id: "operator",
+    heading: "Who runs this site",
+    body: `UnmaskedWords is operated by LUMENTA LABS, obrt za računalne usluge, trgovinu i prijevoz robe, Bunarić V 6, 23234 Vir, Croatia (OIB 36229460035, MBO 99388324). For the limited data described below — newsletter email addresses and server logs — Lumenta Labs is the data controller.
+
+Contact: root@unmaskedwords.com`,
+  },
+  {
     id: "posts",
     heading: "What happens when you post",
     body: `When you submit a post, the following is stored in our database:
@@ -91,7 +98,7 @@ For any other privacy-related questions, contact: root@unmaskedwords.com`,
     heading: "Changes to this policy",
     body: `If this policy changes materially, we will update this page. The architecture of this platform — no accounts, no personal data collection — is not subject to change as a matter of design principle.
 
-Last updated: May 2026`,
+Last updated: October 2026`,
   },
 ];
 

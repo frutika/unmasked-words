@@ -46,6 +46,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })),
     { url: `${BASE}/how-it-works`,           lastModified: gitDate("app/how-it-works/page.tsx"),      changeFrequency: "monthly", priority: 0.75 },
     { url: `${BASE}/privacy`,                lastModified: gitDate("app/privacy/page.tsx"),           changeFrequency: "yearly",  priority: 0.5 },
+    { url: `${BASE}/terms`,                  lastModified: gitDate("app/terms/page.tsx"),             changeFrequency: "yearly",  priority: 0.4 },
     { url: `${BASE}/creed`,                  lastModified: gitDate("app/creed/page.tsx"),             changeFrequency: "monthly", priority: 0.85 },
     { url: `${BASE}/threads`,                lastModified: gitDate("lib/threads.ts"),                 changeFrequency: "weekly",  priority: 0.9 },
     { url: `${BASE}/duel`,                   lastModified: gitDate("app/duel/page.tsx"),              changeFrequency: "always",  priority: 0.9 },

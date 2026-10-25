@@ -31,7 +31,7 @@ These terms work together with our privacy policy, which explains what little da
   {
     id: "operator",
     heading: "2. Who runs this site",
-    body: `UnmaskedWords is operated by LUMENTA LABS, obrt za računalne usluge, trgovinu i prijevoz robe, owner Denis Šehić, Bunarić V 6, 23234 Vir, Croatia (OIB 36229460035, MBO 99388324).
+    body: `UnmaskedWords is operated by LUMENTA LABS, obrt za računalne usluge, trgovinu i prijevoz robe, Bunarić V 6, 23234 Vir, Croatia (OIB 36229460035, MBO 99388324).
 
 Contact: root@unmaskedwords.com`,
   },

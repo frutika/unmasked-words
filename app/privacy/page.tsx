@@ -85,6 +85,15 @@ These logs are not connected to post content in any way.`,
 Individual post pages generate Open Graph metadata for social sharing. When a post link is shared on social platforms, those platforms may fetch the URL to generate a preview. This is standard web behavior and involves no data we transmit.`,
   },
   {
+    id: "ai",
+    heading: "AI features (Mirror and Creed)",
+    body: `When you use Mirror or Creed, the text you type is sent to Anthropic, the provider of the Claude AI model, so it can generate a response. Nothing else is sent with it — no alias, no IP address, no identifier of any kind.
+
+We do not store that text in our database. Anthropic processes it as our service provider under its commercial terms and does not use it to train its models. Anthropic is based in the United States; the transfer is covered by Anthropic's data processing terms, including the EU Standard Contractual Clauses.
+
+The text is processed only because you ask for a response. Do not type names or other details that identify you or anyone else.`,
+  },
+  {
     id: "rights",
     heading: "Your rights",
     body: `Because no personal data is collected with posts, there is no personal data to access, correct, or delete on your behalf. We cannot identify which posts belong to you.

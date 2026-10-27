@@ -301,6 +301,12 @@ export default async function HomePage({
               </Link>
             </div>
           </div>
+          <a
+            href="https://lumentalabs.studio/work/unmaskedwords"
+            className="self-center font-mono text-[#555555] text-[10px] tracking-widest hover:text-[#ff3c00] transition-colors"
+          >
+            BUILT BY LUMENTA LABS
+          </a>
         </div>
       </footer>
     </main>

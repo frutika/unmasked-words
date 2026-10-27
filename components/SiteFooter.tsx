@@ -30,10 +30,16 @@ export default function SiteFooter() {
             </Link>
           ))}
         </div>
-        <div className="flex items-center justify-between border-t border-[#111111] pt-4">
+        <div className="flex flex-wrap items-center justify-between gap-3 border-t border-[#111111] pt-4">
           <p className="font-mono text-[#333333] text-[10px] tracking-widest">
             NO ACCOUNTS. NO TRACKING. NO FILTERS.
           </p>
+          <a
+            href="https://lumentalabs.studio/work/unmaskedwords"
+            className="font-mono text-[#333333] text-[10px] tracking-widest hover:text-[#ff3c00] transition-colors duration-100"
+          >
+            BUILT BY LUMENTA LABS
+          </a>
           <MiningBadge />
         </div>
       </div>

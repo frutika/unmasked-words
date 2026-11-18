@@ -73,9 +73,18 @@ Email addresses are stored on our server and processed by no external email mark
   {
     id: "server",
     heading: "Server logs",
-    body: `Our web server (Nginx) generates access logs that include IP addresses as part of standard HTTP request logging. These logs are used only for server security and troubleshooting purposes. They are not analyzed for behavioral patterns and are rotated regularly.
+    body: `Our web server (Nginx) generates access logs that include IP addresses as part of standard HTTP request logging. These logs are used only for server security and troubleshooting purposes. They are not analyzed for behavioral patterns and are kept for 14 days, then deleted.
 
 These logs are not connected to post content in any way.`,
+  },
+  {
+    id: "hosting",
+    heading: "Hosting, email and backups",
+    body: `The site, its database (posts and newsletter email addresses) and the server logs run on a server rented from Hostinger, located in a data centre in Frankfurt, Germany. Newsletter emails are sent through Hostinger's mail servers.
+
+The database is backed up every night. Backups are stored with Cloudflare (R2 storage restricted to the European Union) and are kept for 14 days, then deleted automatically, so an email address you ask us to remove also disappears from backups within 14 days.
+
+Both providers act only on our instructions under their data processing terms.`,
   },
   {
     id: "third-party",
@@ -107,7 +116,7 @@ For any other privacy-related questions, contact: root@unmaskedwords.com`,
     heading: "Changes to this policy",
     body: `If this policy changes materially, we will update this page. The architecture of this platform — no accounts, no personal data collection — is not subject to change as a matter of design principle.
 
-Last updated: October 2026`,
+Last updated: November 2026`,
   },
 ];
 
